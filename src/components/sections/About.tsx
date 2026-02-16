@@ -8,7 +8,7 @@ export default function About() {
   ]
 
   return (
-    <section id="about" className="min-h-screen relative px-8 py-20">
+    <section id="about" className="relative min-h-screen w-full px-8 py-20">
 
             <div 
                 className="absolute inset-0 z-0"
@@ -26,7 +26,7 @@ export default function About() {
           À propos de <span className="text-amber-400">moi</span>
         </h2>
         
-        <p className="text-gray-300 text-center text-2xl mb-12 max-w-3xl mx-auto font-montserrat">
+        <p className="text-gray-300 text-center text-2xl mb-42 max-w-3xl mx-auto font-montserrat">
           Je suis un développeur passionné qui aime transformer des idées en applications concrètes et fonctionnelles grâce à des technologies modernes.
           Toujours en quête d'amélioration, j'aillie créativité, logique et pragmatisme dans chacun de mes projets.
         </p>
@@ -36,10 +36,10 @@ export default function About() {
           {stats.map((stat, index) => (
             <div 
               key={index}
-              className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-8 text-center hover:border-amber-400 transition-colors"
+              className="bg-white/5 backdrop-blur-sm border border-white rounded-lg p-8 text-center hover:border-amber-400 transition-colors"
             >
               <div className="text-5xl font-bold text-amber-400 mb-2">{stat.number}</div>
-              <div className="text-gray-400">{stat.label}</div>
+              <div className="text-2xl text-gray-400">{stat.label}</div>
             </div>
           ))}
         </div>

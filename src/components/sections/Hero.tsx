@@ -17,7 +17,7 @@ export default function Hero() {
             >
                 <div className="absolute inset-0 bg-black/30" />
                 {/* Gradient Overlay */}
-                <div className="absolute bottom-0 left-0 right-0 h-62 bg-linear-to-b from-transparent to-black/60" />
+                <div className="absolute bottom-0 left-0 right-0 h-64 bg-linear-to-b from-transparent to-black/60" />
             </div>
 
             {/* Description */}
@@ -28,7 +28,7 @@ export default function Hero() {
                         Développeur Web Full Stack <span className="text-amber-400">Junior</span>
                     </h1>
                     <p className="text-xl md:text-2xl mb-6 font-montserrat">
-                        Je conçois des applications modernes,performantes et centrées sur l’utilisateur, en transformant des idées en solutions concrètes.
+                        Je conçois des applications modernes, performantes et centrées sur l’utilisateur, en transformant des idées en solutions concrètes.
                     </p>
                 </div>
 
