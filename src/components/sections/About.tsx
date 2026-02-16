@@ -1,4 +1,4 @@
-import backgroundImage from '../../assets/images/background_about.jpg';
+
 
 export default function About() {
   const stats = [
@@ -8,22 +8,10 @@ export default function About() {
   ]
 
   return (
-    <section id="about" className="relative min-h-screen w-full px-8 py-20">
-
-            <div 
-                className="absolute inset-0 z-0"
-                style={{
-                    backgroundImage: `url(${backgroundImage})`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                }}
-            >
-                <div className="absolute inset-0 bg-black/50" />
-            </div>
-            
+    <section id="about" className="relative min-h-screen bg-transparent w-full px-8 py-20">
       <div className="max-w-6xl mx-auto relative z-10">
-        <h2 className="text-4xl md:text-5xl  font-bold text-white text-center mb-6 font-magilo">
-          À propos de <span className="text-amber-400">moi</span>
+        <h2 className="text-4xl md:text-7xl  font-bold text-amber-400 text-center mb-6 font-magilo">
+          À propos de moi
         </h2>
         
         <p className="text-gray-300 text-center text-2xl mb-42 max-w-3xl mx-auto font-montserrat">
@@ -39,7 +27,7 @@ export default function About() {
               className="bg-white/5 backdrop-blur-sm border border-white rounded-lg p-8 text-center hover:border-amber-400 transition-colors"
             >
               <div className="text-5xl font-bold text-amber-400 mb-2">{stat.number}</div>
-              <div className="text-2xl text-gray-400">{stat.label}</div>
+              <div className="text-2xl text-white">{stat.label}</div>
             </div>
           ))}
         </div>

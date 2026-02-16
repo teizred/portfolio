@@ -1,26 +1,9 @@
-import backgroundImage from '../../assets/images/background.png';
+// import backgroundImage from '../../assets/images/background.png';
 
 export default function Hero() {
     return (
         <main>
             <section id="hero" className="relative h-screen w-full flex items-center justify-center text-white overflow-hidden">
-                
-             {/* Background Image */}
-
-            <div 
-                className="absolute inset-0 z-0"
-                style={{
-                    backgroundImage: `url(${backgroundImage})`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                }}
-            >
-                <div className="absolute inset-0 bg-black/30" />
-                {/* Gradient Overlay */}
-                <div className="absolute bottom-0 left-0 right-0 h-64 bg-linear-to-b from-transparent to-black/60" />
-            </div>
-
-            {/* Description */}
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
                 <div className="md:w-1/2 mb-10 md:mb-0 fade-in visible">
