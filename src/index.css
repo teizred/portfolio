@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+@theme {
+  --font-magilo: 'Magilo', sans-serif;
+  --font-montserrat: 'Montserrat', sans-serif;
+}
+
+@font-face {
+  font-family: 'Magilo';
+  src: url('/src/assets/fonts/magilio/Magilio DEMO.ttf');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/src/assets/fonts/Montserrat/Montserrat/Montserrat-VariableFont_wght.ttf');
+  font-display: swap;
+}
+
+body {
+  font-family: var(--font-montserrat);
+}
