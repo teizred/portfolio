@@ -8,7 +8,7 @@ export default function Navbar() {
 
     useEffect(() => {
         const handleScroll = () => {
-			const sections = ['hero', 'about', 'skills', 'projects', 'contact'];
+			const sections = ['hero', 'about', 'skills', 'projects', 'contact', 'cv'];
             // On ajoute 100px pour que la section change un peu avant d'atteindre le haut exact de l'écran
             // Cela rend l'expérience plus fluide pour l'utilisateur
             const scrollPosition = window.scrollY + 100;
@@ -59,7 +59,7 @@ export default function Navbar() {
                 <h1 className="text-2xl">Teizred</h1>
             </div>
             {/* Desktop menu */}
-            <div className="hidden md:block">
+            <div className="hidden md:flex items-center gap-20">
                 <ul className="flex gap-6">
                     {navLinks.map((link) => (
                         <li key={link.label}>
@@ -71,40 +71,53 @@ export default function Navbar() {
                         </li>
                     ))}
                 </ul>
+                <a 
+                    href="/cv.pdf" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-amber-400 text-black px-8 py-1 rounded-full border border-white hover:text-gray-300 transition-colors font-magilo">
+                    Mon CV
+                </a>
             </div>
 
             {/* Mobile menu button */}
-            <div className="md:hidden">
+            <div className="md:hidden z-50 relative">
                 <button 
                     onClick={toggleMenu} 
                     className="focus:outline-none text-white transition-transform duration-300 ease-in-out w-8 h-8 flex items-center justify-center"
-                    style={{ transform: isMenuOpen ? 'rotate(90deg)' : 'rotate(0deg)' }}
-                >
+                    style={{ transform: isMenuOpen ? 'rotate(90deg)' : 'rotate(0deg)' }}>
                     {isMenuOpen ? <img src={xIcon} alt="Close" className="w-8 h-8 invert" /> : <img src={oreoIcon} alt="Menu" className="w-8 h-8 invert" />}
                 </button>
             </div>
 
             {/* Mobile menu dropdown */}
             <div 
-                className={`absolute top-16 left-0 w-full bg-slate-900/90 backdrop-blur-md border-b border-white/10 flex flex-col items-center py-8 space-y-6 md:hidden transition-all duration-300 ease-in-out origin-top ${
+                className={`fixed inset-0 z-40 h-screen bg-linear-to-b from-slate-900 to-[#2a2a2a] flex flex-col items-center justify-center transition-all duration-300 ease-in-out ${
                     isMenuOpen 
-                        ? 'opacity-100 translate-y-0 pointer-events-auto scale-y-100' 
-                        : 'opacity-0 -translate-y-4 pointer-events-none scale-y-95'
-                }`}
-            >
-                <ul className="flex flex-col items-center gap-6 text-2xl w-full">
+                        ? 'opacity-100 translate-y-0 pointer-events-auto' 
+                        : 'opacity-0 -translate-y-4 pointer-events-none'
+                }`}>
+         
+
+                <ul className="flex flex-col items-center gap-8 text-3xl z-10 font-magilo relative">
                     {navLinks.map((link) => (
                         <li key={link.label} className="w-full text-center">
                             <a 
                                 href={link.href} 
                                 onClick={closeMenu}
-                                className={`block w-full py-2 transition-colors ${activeSection === link.href.substring(1) ? 'text-amber-400' : 'text-white hover:text-gray-300'}`}
-                            >
+                                className={`block w-full py-2 transition-colors duration-300 ${activeSection === link.href.substring(1) ? 'text-amber-400' : 'text-white hover:text-gray-300'}`}>
                                 {link.label}
                             </a>
                         </li>
+                        
                     ))}
                 </ul>
+
+                <div className="absolute bottom-12 px-6 text-center z-10 w-full">
+                    <a href="/cv.pdf" target="_blank" rel="noopener noreferrer" className="bg-amber-400 text-black px-6 py-2 cursor-pointer rounded-full border border-white hover:text-gray-300  transition-colors font-magilo inline-block">
+                        Mon CV
+                    </a>
+                </div>
             </div>
         </nav>
     )
