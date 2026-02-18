@@ -75,7 +75,7 @@ export default function Navbar() {
                     href="/cv.pdf" 
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-amber-400 text-black px-8 py-1 rounded-full border border-white hover:text-gray-300 transition-colors font-magilo">
+                    className="bg-amber-400 text-black px-8 py-1 rounded-full border  hover:text-gray-300 transition-colors font-magilo">
                     Mon CV
                 </a>
             </div>
@@ -114,7 +114,7 @@ export default function Navbar() {
                 </ul>
 
                 <div className="absolute bottom-12 px-6 text-center z-10 w-full">
-                    <a href="/cv.pdf" target="_blank" rel="noopener noreferrer" className="bg-amber-400 text-black px-6 py-2 cursor-pointer rounded-full border border-white hover:text-gray-300  transition-colors font-magilo inline-block">
+                    <a href="/cv.pdf" target="_blank" rel="noopener noreferrer" className="bg-amber-400 text-black px-6 py-2 cursor-pointer rounded-full border  hover:text-gray-300  transition-colors font-magilo inline-block">
                         Mon CV
                     </a>
                 </div>
