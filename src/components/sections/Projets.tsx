@@ -1,6 +1,8 @@
-import image from "/dashboard.png"
-import image2 from "/pertes.png"
-import image3 from "/hero.png"
+import image from "/1.png"
+import image2 from "/2.png"
+import image3 from "/3.png"
+import image4 from "/4.png"
+import image5 from "/5.png"
 
 export default function Projets() {
     const projetsCatagories = [
@@ -26,6 +28,21 @@ export default function Projets() {
             image: image3,
             link: 'https://github.com/adatechschool/grace-adapage-josh-et-jathu'
         },
+        {
+            title: 'Adataviz - Dashboard Vélib\' en temps réel',
+            description: 'Développement d\'une application web en JavaScript Vanilla exploitant l\'API OpenData de Paris. Le site permet de consulter en direct la disponibilité des stations (vélos et bornes) via une interface responsive avec recherche filtrée et pagination. L\'accent a été mis sur la gestion de l\'asynchronisme (fetch) et l\'optimisation de l\'expérience utilisateur.',
+            technologies: ['HTML', 'CSS', 'JavaScript',],
+            image: image5,
+            link: 'https://github.com/teizred/adataviz_Teizred',
+        },
+        {
+            title: 'Salaire-Calcul',
+            description: 'SalaireCalcul est une application web moderne qui vous permet de convertir le prix de n\'importe quel produit en heures de travail, basées sur votre salaire horaire ou le SMIC. Elle inclut également des données d\'inflation en temps réel pour vous donner le "vrai" coût de la vie.',
+            technologies: ['HTML', 'JavaScript', 'React', 'TypeScript', 'TailwindCSS 4', 'ExpressJS', 'Node.js',],
+            image: image4,
+            link: 'https://github.com/teizred/salaire-calcul',
+            demo: 'https://salaire-calculette.vercel.app'
+        },
     ]
     return (
         <section id="projects" className="relative min-h-screen bg-transparent w-full px-8 py-20">
@@ -44,9 +61,16 @@ export default function Projets() {
                                     <span key={tech} className="bg-sky-400/10 text-amber-400 px-4 py-2 rounded-full text-sm border border-amber-400/30">{tech}</span>
                                 ))}
                             </div>
-                            <a href={projet.link} target="_blank" rel="noopener noreferrer" className="bg-amber-400 text-black px-4 py-2 rounded-full border border-white hover:text-gray-300 transition-colors font-magilo inline-block">
-                                Voir le projet
-                            </a>
+                            <div className="flex gap-2">
+                                <a href={projet.link} target="_blank" rel="noopener noreferrer" className="bg-amber-400 text-black px-4 py-2 rounded-full border border-white hover:text-gray-300 transition-colors font-magilo inline-block">
+                                    Voir le projet
+                                </a>
+                                {projet.demo && (
+                                    <a href={projet.demo} target="_blank" rel="noopener noreferrer" className="bg-amber-400 text-black px-4 py-2 rounded-full border border-white hover:text-gray-300 transition-colors font-magilo inline-block">
+                                        Voir la démo
+                                    </a>
+                                )}
+                            </div>
                         </div>
                     ))}
                 </div>
