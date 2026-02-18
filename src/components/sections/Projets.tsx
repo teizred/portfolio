@@ -6,8 +6,8 @@ export default function Projets() {
     const projetsCatagories = [
         {
             title: 'Adashboard',
-            description: 'Un projet de tableau de bord construit avec un frontend React/TypeScript et un backend Node.js/Express.',
-            technologies: ['HTML', 'CSS', 'JavaScript', 'React', 'TypeScript'],
+            description: 'Adashboard est une application React connectée à un backend ExpressJS permettant d’afficher et de gérer des thèmes et leurs compétences associées. Le projet met en œuvre la récupération de données via une API REST, la manipulation CRUD, ainsi qu’un système de progression dynamique. Il illustre ma capacité à intégrer un frontend React avec un backend Node/Express et une base de données PostgreSQL.',
+            technologies: ['HTML', 'CSS', 'JavaScript', 'React', 'ExpressJS', 'Node.js'],
             image: image,
             link: 'https://github.com/teizred/ada-dashboard'
 
@@ -15,13 +15,13 @@ export default function Projets() {
         {
             title: 'Pertes (Work in Progress)',
             description: 'Application web de suivi des pertes produits par dictée vocale. L\'IA parse automatiquement le français parlé et enregistre les données en base de données, classées par catégorie avec ajustement manuel des quantités.',
-            technologies: ['HTML', 'JavaScript', 'React', 'TypeScript', 'TailwindCSS 4', 'Express', 'Neon'],
+            technologies: ['HTML', 'JavaScript', 'React', 'TypeScript', 'TailwindCSS 4', 'ExpressJS', 'Node.js',],
             image: image2,
             link: 'https://github.com/teizred/web-speech-api'
         },
         {
             title: 'Adapage',
-            description: 'Un projet web moderne et performant construit avec React 19 et Vite, utilisant TypeScript pour la robustesse et TailwindCSS 4 pour un style élégant et responsive.',
+            description: 'AdaPageReact est une application développée en React et TypeScript, mettant en avant une personnalité inspirante à travers plusieurs sections dynamiques (présentation, informations clés, frise chronologique et citations). Le projet intègre React Router pour la navigation et TailwindCSS pour un design moderne et responsive.',
             technologies: ['HTML', 'CSS', 'JavaScript', 'React', 'TypeScript', 'TailwindCSS 4'],
             image: image3,
             link: 'https://github.com/adatechschool/grace-adapage-josh-et-jathu'
