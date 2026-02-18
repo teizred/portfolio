@@ -54,7 +54,7 @@ export default function Navbar() {
     ];
 
     return (
-        <nav className="fixed top-0 w-full z-50 flex justify-between items-center text-2xl bg-white/10 backdrop-blur-md border-b border-white/10 text-white h-16 px-4 font-magilo">
+        <nav className="fixed top-0 w-full z-50 flex justify-between items-center text-xl bg-white/10 backdrop-blur-md border-b border-white/10 text-white h-16 px-4 font-magilo">
             <div>
                 <h1 className="text-2xl">Teizred</h1>
             </div>
