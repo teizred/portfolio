@@ -3,6 +3,7 @@ import Hero from "./components/sections/Hero"
 import About from "./components/sections/About"
 import Skills from "./components/sections/Skills"
 import Projets from "./components/sections/Projets"
+import Contact from "./components/sections/Contact"
 import { Analytics } from "@vercel/analytics/react"
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
     <About />
     <Skills />
     <Projets />
+    <Contact />
     <Analytics />
     </div>
     </>

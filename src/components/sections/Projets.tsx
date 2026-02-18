@@ -34,6 +34,7 @@ export default function Projets() {
             technologies: ['HTML', 'CSS', 'JavaScript',],
             image: image5,
             link: 'https://github.com/teizred/adataviz_Teizred',
+            demo: 'https://adataviz-teizred.vercel.app'
         },
         {
             title: 'Salaire-Calcul',
