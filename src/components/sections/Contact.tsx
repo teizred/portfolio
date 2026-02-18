@@ -4,11 +4,9 @@ import githubIcon from '../../assets/icons/github.png';
 import linkedinIcon from '../../assets/icons/linkedin.png';
 import emailIcon from '../../assets/icons/email.png';
 
-// ─── Replace these with your real EmailJS credentials ───────────────────────
 const EMAILJS_SERVICE_ID  = 'service_fhnw8fa';
 const EMAILJS_TEMPLATE_ID = 'template_ujxsbnr';
 const EMAILJS_PUBLIC_KEY  = 'AXjZnpEhsa5R0WS73';
-// ─────────────────────────────────────────────────────────────────────────────
 
 export default function Contact() {
     const formRef = useRef<HTMLFormElement>(null);
@@ -33,11 +31,11 @@ export default function Contact() {
     };
 
     return (
-        <section id="contact" className="relative min-h-screen bg-transparent w-full px-8 py-20 flex items-center">
+        <section id="contact" className="relative min-h-screen bg-transparent w-full px-6 md:px-8 pt-28 pb-20 flex items-start md:items-center">
             <div className="max-w-5xl mx-auto w-full relative z-10">
 
                 {/* Header */}
-                <div className="text-center mb-16">
+                <div className="text-center mb-10 md:mb-16">
                     <h1 className="text-5xl md:text-6xl font-bold font-magilo text-amber-400 mb-4">
                         Contact
                     </h1>
@@ -60,7 +58,7 @@ export default function Contact() {
                         <div className="flex flex-col gap-4">
                             {/* Email */}
                             <a
-                                href="mailto:contact@teizred.dev"
+                                href="mailto:jathurshan.suventhiran@gmail.com"
                                 className="group flex items-center gap-4 bg-white/5 border border-white/10 rounded-2xl p-5 hover:border-amber-400/50 transition-all duration-300"
                             >
                                 <div className="w-12 h-12 rounded-xl bg-amber-400/10 flex items-center justify-center text-amber-400 text-xl shrink-0 group-hover:bg-amber-400/20 transition-colors">
