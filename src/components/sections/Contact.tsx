@@ -6,7 +6,7 @@ import emailIcon from '../../assets/icons/email.png';
 
 // ─── Replace these with your real EmailJS credentials ───────────────────────
 const EMAILJS_SERVICE_ID  = 'service_fhnw8fa';
-const EMAILJS_TEMPLATE_ID = 'template_rpwjxgk';
+const EMAILJS_TEMPLATE_ID = 'template_ujxsbnr';
 const EMAILJS_PUBLIC_KEY  = 'AXjZnpEhsa5R0WS73';
 // ─────────────────────────────────────────────────────────────────────────────
 
