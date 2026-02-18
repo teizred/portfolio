@@ -1,4 +1,5 @@
 
+
 export default function Hero() {
     return (
         <main>
@@ -12,30 +13,35 @@ export default function Hero() {
                     <p className="text-xl md:text-2xl mb-10 font-montserrat">
                         Je conçois des applications modernes, performantes et centrées sur l’utilisateur, en transformant des idées en solutions concrètes.
                     </p>
-                    <div className="flex flex-wrap gap-4">
+                    <div className="flex flex-wrap items-center gap-4">
                         <a
                             href="#projects"
-                            className="bg-amber-400 text-black font-bold font-magilo px-8 py-3.5 rounded-full hover:bg-amber-300 transition-colors duration-300"
-                        >
+                            className="bg-amber-400 text-black font-bold font-magilo px-8 py-3.5 rounded-full hover:bg-amber-300 transition-colors duration-300">
                             Voir mes projets →
                         </a>
                         <a
                             href="#contact"
-                            className="bg-white/10 backdrop-blur-md text-white font-bold font-magilo px-8 py-3.5 rounded-full border border-white/20 hover:border-amber-400 hover:text-amber-400 transition-all duration-300"
-                        >
+                            className="bg-white/10 backdrop-blur-md text-white font-bold font-magilo px-8 py-3.5 rounded-full border border-white/20 hover:border-amber-400 hover:text-amber-400 transition-all duration-300">
                             Me contacter
+                        </a>
+                        <a
+                            href="https://github.com/teizred"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="w-12 h-12 rounded-full bg-white/10 border border-white/20 flex items-center justify-center hover:border-amber-400 hover:bg-amber-400/10 transition-all duration-300">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" className="w-5 h-5 invert" />
+                        </a>
+                        <a
+                            href="https://linkedin.com/in/jathurshan-suventhiran"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="w-12 h-12 rounded-full bg-white/10 border border-white/20 flex items-center justify-center hover:border-amber-400 hover:bg-amber-400/10 transition-all duration-300">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn" className="w-5 h-5" />
                         </a>
                     </div>
                 </div>
 
             </div>
-
-            {/* Image */}
-
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
-               <img src="../../assets/hero.png" alt="" />
-            </div>
-
 
             <a
                 href="#about"
