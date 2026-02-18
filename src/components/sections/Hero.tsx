@@ -1,6 +1,39 @@
+import { useEffect, useState } from 'react';
 
+const WORD = 'Junior';
+const TYPING_SPEED = 100;
+const DELETING_SPEED = 70;
+const PAUSE = 2000;
+
+function useTypingLoop() {
+    const [displayed, setDisplayed] = useState('');
+    const [isDeleting, setIsDeleting] = useState(false);
+
+    useEffect(() => {
+        let timeout: ReturnType<typeof setTimeout>;
+
+        if (!isDeleting && displayed === WORD) {
+            timeout = setTimeout(() => setIsDeleting(true), PAUSE);
+        } else if (isDeleting && displayed === '') {
+            timeout = setTimeout(() => setIsDeleting(false), 400);
+        } else {
+            timeout = setTimeout(() => {
+                setDisplayed(isDeleting
+                    ? WORD.slice(0, displayed.length - 1)
+                    : WORD.slice(0, displayed.length + 1)
+                );
+            }, isDeleting ? DELETING_SPEED : TYPING_SPEED);
+        }
+
+        return () => clearTimeout(timeout);
+    }, [displayed, isDeleting]);
+
+    return displayed;
+}
 
 export default function Hero() {
+    const typedWord = useTypingLoop();
+
     return (
         <main>
             <section id="hero" className="relative h-screen w-full flex items-center justify-center text-white overflow-hidden">
@@ -10,7 +43,8 @@ export default function Hero() {
                 {/* Left: Text */}
                 <div className="w-full md:w-1/2 mb-10 md:mb-0 fade-in visible text-center md:text-left">
                     <h1 className="text-5xl md:text-8xl font-bold mb-6 font-magilo">
-                        Développeur Web Full Stack <span className="text-amber-400">Junior</span>
+                        Développeur Web Full Stack<br />
+                        <span className="text-amber-400">{typedWord}<span className="animate-pulse">|</span></span>
                     </h1>
                     <p className="text-xl md:text-2xl mb-10 font-montserrat">
                         Je conçois des applications modernes, performantes et centrées sur l'utilisateur, en transformant des idées en solutions concrètes.
