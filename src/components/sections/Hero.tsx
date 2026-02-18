@@ -36,9 +36,9 @@ export default function Hero() {
 
     return (
         <main>
-            <section id="hero" className="relative h-screen w-full flex items-center justify-center text-white overflow-hidden pt-16 pb-20 md:pt-0 md:pb-0">
+            <section id="hero" className="relative min-h-screen w-full flex items-center justify-center text-white overflow-hidden py-20 md:py-0">
 
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 flex flex-col-reverse md:flex-row items-center gap-12 md:gap-16">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 flex flex-col-reverse md:flex-row items-center gap-8 md:gap-16">
 
                 {/* Left: Text */}
                 <div className="w-full md:w-1/2 mb-10 md:mb-0 fade-in visible text-center md:text-left">
@@ -78,7 +78,7 @@ export default function Hero() {
                 </div>
 
                 {/* Right: Photo */}
-                <div className="w-48 h-48 md:w-96 md:h-96 shrink-0 md:ml-40 self-center">
+                <div className="w-40 h-40 md:w-96 md:h-96 shrink-0 md:ml-40 self-center">
                     <img
                         src="/me.JPG"
                         alt="Jathurshan Suventhiran"
