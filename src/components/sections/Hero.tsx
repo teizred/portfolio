@@ -44,7 +44,7 @@ export default function Hero() {
                 </div>
 
                 {/* Right: Photo */}
-                <div className="w-48 h-48 md:w-80 md:h-80 shrink-0 md:ml-40">
+                <div className="w-48 h-48 md:w-96 md:h-96 shrink-0 md:ml-40 self-center">
                     <img
                         src="/me.JPG"
                         alt="Jathurshan Suventhiran"
