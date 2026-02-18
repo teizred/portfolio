@@ -36,7 +36,7 @@ export default function Hero() {
 
     return (
         <main>
-            <section id="hero" className="relative h-screen w-full flex items-center justify-center text-white overflow-hidden pt-20 md:pt-0">
+            <section id="hero" className="relative h-screen w-full flex items-center justify-center text-white overflow-hidden pt-16 pb-20 md:pt-0 md:pb-0">
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 flex flex-col-reverse md:flex-row items-center gap-12 md:gap-16">
 
