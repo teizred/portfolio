@@ -9,9 +9,23 @@ export default function Hero() {
                     <h1 className="text-7xl md:text-8xl font-bold mb-6 font-magilo">
                         Développeur Web Full Stack <span className="text-amber-400">Junior</span>
                     </h1>
-                    <p className="text-xl md:text-2xl mb-6 font-montserrat">
+                    <p className="text-xl md:text-2xl mb-10 font-montserrat">
                         Je conçois des applications modernes, performantes et centrées sur l’utilisateur, en transformant des idées en solutions concrètes.
                     </p>
+                    <div className="flex flex-wrap gap-4">
+                        <a
+                            href="#projects"
+                            className="bg-amber-400 text-black font-bold font-magilo px-8 py-3.5 rounded-full hover:bg-amber-300 transition-colors duration-300"
+                        >
+                            Voir mes projets →
+                        </a>
+                        <a
+                            href="#contact"
+                            className="bg-white/10 backdrop-blur-md text-white font-bold font-magilo px-8 py-3.5 rounded-full border border-white/20 hover:border-amber-400 hover:text-amber-400 transition-all duration-300"
+                        >
+                            Me contacter
+                        </a>
+                    </div>
                 </div>
 
             </div>
