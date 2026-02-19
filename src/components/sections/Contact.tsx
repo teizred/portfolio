@@ -127,7 +127,7 @@ export default function Contact() {
                                         name="from_name"
                                         required
                                         placeholder="Jean Dupont"
-                                        className="bg-white/5 border border-white/10 rounded-xl px-5 py-3.5 text-white placeholder-gray-500 focus:outline-none focus:border-amber-400 transition-colors duration-300"
+                                        className="bg-white/5 border border-white/10 rounded-xl px-5 py-3.5 text-white placeholder-gray-400 focus:outline-none focus:border-amber-400 transition-colors duration-300"
                                     />
                                 </div>
                                 <div className="flex flex-col gap-1.5">
@@ -137,7 +137,7 @@ export default function Contact() {
                                         name="from_email"
                                         required
                                         placeholder="jean@exemple.com"
-                                        className="bg-white/5 border border-white/10 rounded-xl px-5 py-3.5 text-white placeholder-gray-500 focus:outline-none focus:border-amber-400 transition-colors duration-300"
+                                        className="bg-white/5 border border-white/10 rounded-xl px-5 py-3.5 text-white placeholder-gray-400 focus:outline-none focus:border-amber-400 transition-colors duration-300"
                                     />
                                 </div>
                                 <div className="flex flex-col gap-1.5">
@@ -147,7 +147,7 @@ export default function Contact() {
                                         required
                                         rows={5}
                                         placeholder="Bonjour, je souhaite..."
-                                        className="bg-white/5 border border-white/10 rounded-xl px-5 py-3.5 text-white placeholder-gray-500 focus:outline-none focus:border-amber-400 transition-colors duration-300 resize-none"
+                                        className="bg-white/5 border border-white/10 rounded-xl px-5 py-3.5 text-white placeholder-gray-400 focus:outline-none focus:border-amber-400 transition-colors duration-300 resize-none"
                                     />
                                 </div>
 
