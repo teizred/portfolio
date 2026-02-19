@@ -16,22 +16,24 @@ export default function Projets() {
         },
         {
             title: 'Pertes (Work in Progress)',
-            description: 'Application web de suivi des pertes produits par dictée vocale. L\'IA parse automatiquement le français parlé et enregistre les données en base de données, classées par catégorie avec ajustement manuel des quantités.',
-            technologies: ['HTML', 'JavaScript', 'React', 'TypeScript', 'TailwindCSS 4', 'ExpressJS', 'Node.js',],
+            description: 'Application web de suivi des pertes produits par dictée vocale. L\'IA (GPT-4o-mini) parse automatiquement le français parlé et enregistre les données sur Neon PostgreSQL, avec ajustement manuel des quantités et export PDF / email. Conçue pour un usage terrain en restauration rapide, elle simplifie la saisie des pertes sans interaction clavier. Stack : React, TypeScript, Node.js / Express — déployée sur Vercel + Railway.',
+            technologies: ['HTML', 'JavaScript', 'React', 'TypeScript', 'TailwindCSS 4', 'ExpressJS', 'Node.js', 'Railway'],
             image: image2,
-            link: 'https://github.com/teizred/web-speech-api'
+            link: 'https://github.com/teizred/web-speech-api',
+            demo: 'https://web-speech-api-ai.vercel.app/'
         },
         {
             title: 'Adapage',
             description: 'AdaPageReact est une application développée en React et TypeScript, mettant en avant une personnalité inspirante à travers plusieurs sections dynamiques (présentation, informations clés, frise chronologique et citations). Le projet intègre React Router pour la navigation et TailwindCSS pour un design moderne et responsive.',
             technologies: ['HTML', 'CSS', 'JavaScript', 'React', 'TypeScript', 'TailwindCSS 4'],
             image: image3,
-            link: 'https://github.com/adatechschool/grace-adapage-josh-et-jathu'
+            link: 'https://github.com/adatechschool/grace-adapage-josh-et-jathu',
+            demo: 'https://grace-adapage-josh-et-jathu.vercel.app'
         },
         {
             title: 'Adataviz - Dashboard Vélib\' en temps réel',
             description: 'Développement d\'une application web en JavaScript Vanilla exploitant l\'API OpenData de Paris. Le site permet de consulter en direct la disponibilité des stations (vélos et bornes) via une interface responsive avec recherche filtrée et pagination. L\'accent a été mis sur la gestion de l\'asynchronisme (fetch) et l\'optimisation de l\'expérience utilisateur.',
-            technologies: ['HTML', 'CSS', 'JavaScript',],
+            technologies: ['HTML', 'CSS', 'JavaScript', 'API'],
             image: image5,
             link: 'https://github.com/teizred/adataviz_Teizred',
             demo: 'https://adataviz-teizred.vercel.app'
@@ -63,11 +65,11 @@ export default function Projets() {
                                 ))}
                             </div>
                             <div className="flex gap-2">
-                                <a href={projet.link} target="_blank" rel="noopener noreferrer" className="bg-amber-400 text-black px-4 py-2 rounded-full border border-white hover:text-gray-300 transition-colors font-magilo inline-block">
+                                <a href={projet.link} target="_blank" rel="noopener noreferrer" className="bg-amber-400 text-black px-4 py-2 rounded-full hover:text-gray-300 transition-colors font-magilo inline-block">
                                     Voir le projet
                                 </a>
                                 {projet.demo && (
-                                    <a href={projet.demo} target="_blank" rel="noopener noreferrer" className="bg-amber-400 text-black px-4 py-2 rounded-full border border-white hover:text-gray-300 transition-colors font-magilo inline-block">
+                                    <a href={projet.demo} target="_blank" rel="noopener noreferrer" className="bg-amber-400 text-black px-4 py-2 rounded-full hover:text-gray-300 transition-colors font-magilo inline-block">
                                         Voir la démo
                                     </a>
                                 )}
