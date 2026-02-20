@@ -44,7 +44,7 @@ export default function Skills() {
                 {category.technologies.map((tech, i) => (
                   <span 
                     key={i}
-                    className="bg-sky-400/10 text-amber-400 px-4 py-2 rounded-full text-sm border border-amber-400/30"
+                    className="px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-semibold border border-amber-400/40 text-amber-300 bg-amber-400/5 font-montserrat hover:border-amber-400 hover:bg-amber-400/10 transition-all duration-300 cursor-default"
                   >
                     {tech}
                   </span>
