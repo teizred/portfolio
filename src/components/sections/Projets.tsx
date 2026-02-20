@@ -61,7 +61,7 @@ export default function Projets() {
                             <p className="text-gray-300 mb-4">{projet.description}</p>
                             <div className="flex flex-wrap gap-2 mb-4">
                                 {projet.technologies.map((tech) => (
-                                    <span key={tech} className="bg-sky-400/10 text-amber-400 px-4 py-2 rounded-full text-sm border border-amber-400/30">{tech}</span>
+                                    <span key={tech} className="px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-semibold border border-amber-400/40 text-amber-300 bg-amber-400/5 font-montserrat hover:border-amber-400 hover:bg-amber-400/10 transition-all duration-300 cursor-default">{tech}</span>
                                 ))}
                             </div>
                             <div className="flex gap-2">
