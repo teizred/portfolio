@@ -58,7 +58,7 @@ export default function Projets() {
                         <div key={projet.title} className="bg-white/10  backdrop-blur-md  rounded-xl p-6 border border-white/10 hover:border-amber-400 transition-colors duration-300">
                             <img src={projet.image} alt={projet.title} className="w-full h-48 object-cover rounded-lg mb-4" />
                             <h2 className="text-2xl font-bold font-magilo text-amber-400 mb-2">{projet.title}</h2>
-                            <p className="text-gray-300 mb-4">{projet.description}</p>
+                            <p className="text-white mb-4">{projet.description}</p>
                             <div className="flex flex-wrap gap-2 mb-4">
                                 {projet.technologies.map((tech) => (
                                     <span key={tech} className="px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-semibold border border-amber-400/40 text-amber-300 bg-amber-400/5 font-montserrat hover:border-amber-400 hover:bg-amber-400/10 transition-all duration-300 cursor-default">{tech}</span>

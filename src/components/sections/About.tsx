@@ -25,7 +25,7 @@ export default function About() {
 
         {/* Bio Texte */}
         <div className="text-center mb-10 md:mb-12 flex flex-col gap-4 md:gap-6">
-          <p className="text-gray-200 text-lg md:text-2xl font-montserrat leading-relaxed">
+          <p className="text-white text-lg md:text-2xl font-montserrat leading-relaxed">
             De la précision de la{' '}
             <span className="text-amber-400 font-semibold underline decoration-amber-400/30 underline-offset-4">
               Maroquinerie
@@ -34,7 +34,7 @@ export default function About() {
             <span className="text-amber-400 font-semibold">Responsable des Ventes</span>,
             mon parcours est guidé par l'exigence et le sens de l'organisation.
           </p>
-          <p className="text-gray-300 text-base md:text-xl font-montserrat leading-relaxed max-w-3xl mx-auto">
+          <p className="text-white text-base md:text-xl font-montserrat leading-relaxed max-w-3xl mx-auto">
             Aujourd'hui en formation chez{' '}
             <span className="text-amber-400 font-semibold">Ada Tech School</span>, j'applique cette rigueur au{' '}
             <span className="text-amber-400 font-semibold">développement web full stack</span>. Passionné par la création d'applications utiles,
