@@ -1,10 +1,18 @@
 import { useEffect, useState } from 'react';
-import { useScroll, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 const WORD = 'Junior';
 const TYPING_SPEED = 100;
 const DELETING_SPEED = 70;
 const PAUSE = 2000;
+
+const sections = [
+  { id: 'hero', label: 'Home' },
+  { id: 'about', label: 'About' },
+  { id: 'skills', label: 'Skills' },
+  { id: 'projects', label: 'Projects' },
+  { id: 'contact', label: 'Contact' },
+]
 
 function useTypingLoop() {
     const [displayed, setDisplayed] = useState('');
@@ -34,10 +42,48 @@ function useTypingLoop() {
 
 export default function Hero() {
     const typedWord = useTypingLoop();
-    const { scrollYProgress } = useScroll();
+    const [activeId, setActiveId] = useState('hero');
+
+    // Calcul simple de la progression : index de la section / nombre total
+    const activeIndex = sections.findIndex(s => s.id === activeId);
+    const progress = (activeIndex + 1) / sections.length;
+
+    // Détecteur de section active (Scroll Spy)
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    // On utilise threshold 0 pour que ça s'active dès que la section touche la zone
+                    if (entry.isIntersecting) {
+                        setActiveId(entry.target.id);
+                    }
+                });
+            },
+            // Zone de détection très large pour mobile : de 2% en haut à 80% en bas.
+            // Cela permet de capter la section dès qu'elle entre majoritairement à l'écran.
+            { threshold: 0, rootMargin: "-2% 0% -20% 0%" }
+        );
+
+        // On observe chaque section définie dans notre tableau
+        sections.forEach(({ id }) => {
+            const el = document.getElementById(id);
+            if (el) observer.observe(el);
+        });
+
+        return () => observer.disconnect();
+    }, []);
 
     return (
         <main>
+            {/* Minimalist Top Brand Bar */}
+            <div className="fixed top-0 left-0 w-full z-50 px-4 py-4 md:px-6 md:py-6 flex justify-between items-center pointer-events-none">
+                <div className="flex items-center gap-4 pointer-events-auto">
+                    <h2 className="text-xl md:text-2xl font-bold font-magilo text-white tracking-tighter hover:text-amber-400 transition-colors cursor-default">
+                        Teizred
+                    </h2>
+                </div>
+            </div>
+
             <section id="hero" className="relative min-h-screen w-full flex items-center justify-center text-white overflow-hidden py-20 md:py-0">
 
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 flex flex-col-reverse md:flex-row items-center gap-8 md:gap-16">
@@ -90,20 +136,27 @@ export default function Hero() {
 
                 </div>
 
-                <motion.button
-                    onClick={() => {
-                        document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })
-                    }}
-                    className="fixed bottom-8 left-1/2 -translate-x-1/2 px-8 py-3 rounded-full border-2 border-amber-400 z-50 font-montserrat text-sm tracking-widest uppercase overflow-hidden backdrop-blur-sm bg-black/30"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                >
+                <motion.div className="fixed bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 flex items-center px-1.5 py-1.5 md:px-2 md:py-2 rounded-full border-2 border-amber-400 backdrop-blur-md bg-black/30 z-50 overflow-hidden shadow-2xl w-[95%] max-w-[500px] md:max-w-[600px] justify-between">
                     <motion.div
-                        style={{ scaleX: scrollYProgress, transformOrigin: 'left' }}
-                        className="absolute inset-0 bg-amber-400 z-0"
+                        animate={{ scaleX: progress }}
+                        transition={{ type: "spring", stiffness: 100, damping: 20 }}
+                        style={{ transformOrigin: 'left' }}
+                        className="absolute inset-0 bg-amber-400/20 z-0"
                     />
-                    <span className="relative z-10 text-white font-bold">Continuez →</span>
-                </motion.button>
+                    {sections.map(({ id, label }) => (
+                        <button
+                            key={id}
+                            onClick={() => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })}
+                            className={`flex-1 py-1 md:py-1.5 rounded-full text-[10px] md:text-sm font-bold font-montserrat cursor-pointer transition-all duration-300 relative z-10 whitespace-nowrap text-center ${
+                                activeId === id 
+                                    ? 'bg-amber-400 text-black scale-105 shadow-md' 
+                                    : 'text-white/70 hover:text-amber-400'
+                            }`}
+                        >
+                            {label}
+                        </button>
+                    ))}
+                </motion.div>
 
             </section>
         </main>
