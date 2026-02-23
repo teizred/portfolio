@@ -144,12 +144,12 @@ export default function Hero() {
                 </motion.div>
             </div>
 
-            <section id="hero" className="relative min-h-screen w-full flex items-center justify-center text-white overflow-hidden py-20 md:py-0">
+            <section id="hero" className="relative min-h-screen w-full flex items-center justify-center text-white overflow-hidden pt-28 pb-32 md:py-0">
 
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 flex flex-col-reverse md:flex-row items-center gap-8 md:gap-16">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 flex flex-col-reverse md:flex-row items-center gap-6 md:gap-16">
 
                     {/* Left: Text */}
-                    <div className="w-full md:w-1/2 mb-10 md:mb-0 fade-in visible text-center md:text-left">
+                    <div className="w-full md:w-1/2 mb-4 md:mb-0 fade-in visible text-center md:text-left">
                         <h1 className="text-5xl md:text-8xl font-bold mb-6 font-magilo">
                             Développeur Web Full Stack<br />
                             <span className="text-amber-400">{typedWord}<span className="animate-pulse">|</span></span>
@@ -190,7 +190,7 @@ export default function Hero() {
                         <img
                             src="/me.JPG"
                             alt="Jathurshan Suventhiran"
-                            className="w-full h-full object-cover rounded-full border- border-amber-400/70 shadow-2xl shadow-amber-400/20"
+                            className="w-full h-full object-cover rounded-full border-amber-400/70 shadow-2xl shadow-amber-400/20"
                         />
                     </div>
 
