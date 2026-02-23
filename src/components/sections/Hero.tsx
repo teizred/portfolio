@@ -43,6 +43,7 @@ function useTypingLoop() {
 export default function Hero() {
     const typedWord = useTypingLoop();
     const [activeId, setActiveId] = useState('hero');
+    const [navVisible, setNavVisible] = useState(false);
 
     // Calcul simple de la progression : index de la section / nombre total
     const activeIndex = sections.findIndex(s => s.id === activeId);
@@ -56,6 +57,7 @@ export default function Hero() {
                     // On utilise threshold 0 pour que ça s'active dès que la section touche la zone
                     if (entry.isIntersecting) {
                         setActiveId(entry.target.id);
+                        setNavVisible(entry.target.id !== 'hero');
                     }
                 });
             },
@@ -141,7 +143,22 @@ export default function Hero() {
 
                 </div>
 
-                <motion.div className="fixed bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 flex items-center px-1.5 py-1.5 md:px-2 md:py-2 rounded-full border-2 border-amber-400 backdrop-blur-md bg-black/30 z-50 overflow-hidden shadow-2xl w-[95%] max-w-[500px] md:max-w-[600px] justify-between">
+                <motion.button
+                    initial={{ opacity: 1, y: 0 }}
+                    animate={{ opacity: navVisible ? 0 : 1, y: navVisible ? 20 : 0, pointerEvents: navVisible ? 'none' : 'auto' }}
+                    transition={{ duration: 0.4 }}
+                    onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
+                    className="fixed bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 py-3 rounded-full border-2 border-amber-400 backdrop-blur-md bg-black/30 z-50 font-montserrat font-bold text-white shadow-2xl hover:bg-amber-400/10 transition-colors w-[90%] max-w-[320px] md:max-w-[450px] text-center"
+                >
+                    Explorer →
+                </motion.button>
+
+                <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: navVisible ? 1 : 0, y: navVisible ? 0 : 20, pointerEvents: navVisible ? 'auto' : 'none' }}
+                    transition={{ duration: 0.4, ease: "easeOut" }}
+                    className="fixed bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 flex items-center px-1.5 py-1.5 md:px-2 md:py-2 rounded-full border-2 border-amber-400 backdrop-blur-md bg-black/30 z-50 overflow-hidden shadow-2xl w-[90%] max-w-[320px] md:max-w-[450px] justify-between"
+                >
                     <motion.div
                         animate={{ scaleX: progress }}
                         transition={{ type: "spring", stiffness: 100, damping: 20 }}
