@@ -107,8 +107,8 @@ export default function Hero() {
                         <div className="flex flex-wrap items-center justify-center md:justify-start gap-4">
                             <a
                                 href="#projects"
-                                className="bg-amber-400 text-black font-bold font-magilo px-8 py-3.5 rounded-full hover:bg-amber-300 transition-colors duration-300">
-                                Voir mes projets →
+                                className="group bg-amber-400 text-black font-bold font-magilo px-8 py-3.5 rounded-full hover:bg-amber-300 transition-colors duration-300 flex items-center gap-2">
+                                Voir mes projets <span className="group-hover:translate-x-1.5 transition-transform duration-300">→</span>
                             </a>
                             <a
                                 href="#contact"
