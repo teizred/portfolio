@@ -165,7 +165,7 @@ export default function Hero() {
                     animate={{ opacity: navVisible ? 0 : 1, y: navVisible ? 20 : 0, pointerEvents: navVisible ? 'none' : 'auto' }}
                     transition={{ duration: 0.4 }}
                     onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
-                    className="group fixed bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 py-3 rounded-full border-2 border-amber-400 backdrop-blur-md bg-black/30 z-50 font-montserrat font-bold text-white shadow-2xl hover:bg-amber-400/10 transition-colors w-[90%] max-w-[320px] md:max-w-[450px] flex justify-center items-center gap-2"
+                    className="group fixed bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 py-3 cursor-pointer rounded-full border-2 border-amber-400 backdrop-blur-md bg-black/30 z-50 font-montserrat font-bold text-white shadow-2xl hover:bg-amber-400/10 transition-colors w-[90%] max-w-[320px] md:max-w-[450px] flex justify-center items-center gap-2"
                 >
                     Explorer 
                     <span className="group-hover:translate-y-1 transition-transform duration-300">
