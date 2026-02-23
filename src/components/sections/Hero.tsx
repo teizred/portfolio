@@ -1,6 +1,12 @@
 import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowDown, ArrowRight } from 'phosphor-react';
+
+const STATUS_WORDS = [
+  "Disponible en alternance",
+  "Curieux & créatif",
+  "Open to work",
+]
 
 const WORD = 'Junior';
 const TYPING_SPEED = 100;
@@ -45,6 +51,14 @@ export default function Hero() {
     const typedWord = useTypingLoop();
     const [activeId, setActiveId] = useState('hero');
     const [navVisible, setNavVisible] = useState(false);
+    const [statusIndex, setStatusIndex] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setStatusIndex(prev => (prev + 1) % STATUS_WORDS.length)
+        }, 3000)
+        return () => clearInterval(interval)
+    }, [])
 
     // Calcul simple de la progression : index de la section / nombre total
     const activeIndex = sections.findIndex(s => s.id === activeId);
@@ -80,15 +94,37 @@ export default function Hero() {
         <main>
             {/* Minimalist Top Brand Bar */}
             <div className="fixed top-0 left-0 w-full z-50 px-4 py-4 md:px-6 md:py-6 flex justify-between items-center pointer-events-none">
-                <div className="flex items-center gap-4 pointer-events-auto">
+                <div className="flex items-center gap-2 pointer-events-auto overflow-hidden">
                     <motion.h2 
-                        initial={{ opacity: 0, x: -50 }}
+                        initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
+                        transition={{ duration: 0.5, delay: 0.3 }}
                         className="text-xl md:text-2xl font-bold font-magilo text-white tracking-tighter hover:text-amber-400 transition-colors cursor-default"
                     >
                         Teizred
                     </motion.h2>
+
+                    <motion.span
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.5, delay: 0.6 }}
+                        className="text-white/40 font-montserrat"
+                    >
+                        ·
+                    </motion.span>
+
+                    <AnimatePresence mode="wait">
+                        <motion.span
+                            key={statusIndex}
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: 20 }}
+                            transition={{ duration: 0.4, delay: 0.9 }}
+                            className="text-sm font-montserrat text-white"
+                        >
+                            {STATUS_WORDS[statusIndex]}
+                        </motion.span>
+                    </AnimatePresence>
                 </div>
                 
                 <motion.div 
@@ -154,7 +190,7 @@ export default function Hero() {
                         <img
                             src="/me.JPG"
                             alt="Jathurshan Suventhiran"
-                            className="w-full h-full object-cover rounded-full border-4 border-amber-400/70 shadow-2xl shadow-amber-400/20"
+                            className="w-full h-full object-cover rounded-full border- border-amber-400/70 shadow-2xl shadow-amber-400/20"
                         />
                     </div>
 
