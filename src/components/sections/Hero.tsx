@@ -82,14 +82,30 @@ export default function Hero() {
             <div className="fixed top-0 left-0 w-full z-50 px-4 py-4 md:px-6 md:py-6 flex justify-between items-center pointer-events-none">
                 <div className="flex items-center gap-4 pointer-events-auto">
                     <motion.h2 
-                        initial={{ opacity: 0, x: -20 }}
+                        initial={{ opacity: 0, x: -50 }}
                         animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.5, delay: 0.5 }}
+                        transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
                         className="text-xl md:text-2xl font-bold font-magilo text-white tracking-tighter hover:text-amber-400 transition-colors cursor-default"
                     >
                         Teizred
                     </motion.h2>
                 </div>
+                
+                <motion.div 
+                    initial={{ opacity: 0, x: 50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
+                    className="pointer-events-auto"
+                >
+                    <a
+                        href="/cv.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-block bg-amber-400 text-black font-bold font-magilo px-6 py-2 md:px-8 md:py-2.5 rounded-full hover:bg-amber-300 transition-colors duration-300 text-sm md:text-base shadow-lg"
+                    >
+                        Mon CV
+                    </a>
+                </motion.div>
             </div>
 
             <section id="hero" className="relative min-h-screen w-full flex items-center justify-center text-white overflow-hidden py-20 md:py-0">
