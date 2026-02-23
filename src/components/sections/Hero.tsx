@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import { ArrowDown, ArrowRight } from 'phosphor-react';
 
 const WORD = 'Junior';
 const TYPING_SPEED = 100;
@@ -108,7 +109,7 @@ export default function Hero() {
                             <a
                                 href="#projects"
                                 className="group bg-amber-400 text-black font-bold font-magilo px-8 py-3.5 rounded-full hover:bg-amber-300 transition-colors duration-300 flex items-center gap-2">
-                                Voir mes projets <span className="group-hover:translate-x-1.5 transition-transform duration-300">→</span>
+                                Voir mes projets <span className="group-hover:translate-x-1.5 transition-transform duration-300"><ArrowRight size={20} weight="bold" /></span>
                             </a>
                             <a
                                 href="#contact"
@@ -148,9 +149,18 @@ export default function Hero() {
                     animate={{ opacity: navVisible ? 0 : 1, y: navVisible ? 20 : 0, pointerEvents: navVisible ? 'none' : 'auto' }}
                     transition={{ duration: 0.4 }}
                     onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
-                    className="fixed bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 py-3 rounded-full border-2 border-amber-400 backdrop-blur-md bg-black/30 z-50 font-montserrat font-bold text-white shadow-2xl hover:bg-amber-400/10 transition-colors w-[90%] max-w-[320px] md:max-w-[450px] text-center"
+                    className="group fixed bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 py-3 rounded-full border-2 border-amber-400 backdrop-blur-md bg-black/30 z-50 font-montserrat font-bold text-white shadow-2xl hover:bg-amber-400/10 transition-colors w-[90%] max-w-[320px] md:max-w-[450px] flex justify-center items-center gap-2"
                 >
-                    Explorer →
+                    Explorer 
+                    <span className="group-hover:translate-y-1 transition-transform duration-300">
+                        <motion.span 
+                            animate={{ y: [0, 3, 0] }} 
+                            transition={{ repeat: Infinity, duration: 1.1, ease: "easeInOut" }}
+                            className="block"
+                        >
+                            <ArrowDown size={16} weight="bold" />
+                        </motion.span>
+                    </span>
                 </motion.button>
 
                 <motion.div 
