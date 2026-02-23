@@ -1,16 +1,4 @@
-import { 
-  UsersThree, 
-  Lightbulb, 
-  GraduationCap, 
-  ChatCircleText 
-} from "phosphor-react";
-
-interface TechItem {
-  name: string;
-  icon?: string;
-  invert?: boolean;
-  component?: React.ElementType;
-}
+import { TECHNOLOGIES, type TechItem } from "@/data/technologies";
 
 interface SkillCategory {
   title: string;
@@ -24,44 +12,44 @@ export default function Skills() {
       title: 'Frontend',
       description: 'Création d\'interfaces utilisateur modernes et réactives',
       technologies: [
-        { name: 'HTML', icon: 'https://svgl.app/library/html5.svg' },
-        { name: 'CSS', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
-        { name: 'JavaScript', icon: 'https://svgl.app/library/javascript.svg' },
-        { name: 'React', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
-        { name: 'TypeScript', icon: 'https://svgl.app/library/typescript.svg' },
-        { name: 'Next.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg', invert: true },
-        { name: 'Tailwind CSS', icon: 'https://svgl.app/library/tailwindcss.svg' }
+        TECHNOLOGIES.html,
+        TECHNOLOGIES.css,
+        TECHNOLOGIES.javascript,
+        TECHNOLOGIES.react,
+        TECHNOLOGIES.typescript,
+        TECHNOLOGIES.nextjs,
+        TECHNOLOGIES.tailwindcss
       ]
     },
     {
       title: 'Backend',
       description: 'APIs REST et gestion de bases de données',
       technologies: [
-        { name: 'Node.js', icon: 'https://svgl.app/library/nodejs.svg' },
-        { name: 'Express', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg', invert: true },
-        { name: 'PostgreSQL', icon: 'https://svgl.app/library/postgresql.svg' },
-        { name: 'Supabase', icon: 'https://svgl.app/library/supabase.svg' }
+        TECHNOLOGIES.nodejs,
+        TECHNOLOGIES.expressjs,
+        TECHNOLOGIES.postgresql,
+        TECHNOLOGIES.supabase
       ]
     },
     {
       title: 'Outils & Workflow',
       description: 'Versionning et collaboration en équipe',
       technologies: [
-        { name: 'Git', icon: 'https://svgl.app/library/git.svg' },
-        { name: 'GitHub', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg', invert: true },
-        { name: 'VS Code', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg' },
-        { name: 'Figma', icon: 'https://svgl.app/library/figma.svg' },
-        { name: 'Docker', icon: 'https://svgl.app/library/docker.svg' }
+        TECHNOLOGIES.git,
+        TECHNOLOGIES.github,
+        TECHNOLOGIES.vscode,
+        TECHNOLOGIES.figma,
+        TECHNOLOGIES.docker
       ]
     },
     {
       title: 'Soft Skills',
       description: 'Compétences transversales essentielles',
       technologies: [
-        { name: 'Travail d\'équipe', component: UsersThree },
-        { name: 'Résolution de problèmes', component: Lightbulb },
-        { name: 'Apprentissage continu', component: GraduationCap },
-        { name: 'Communication', component: ChatCircleText }
+        TECHNOLOGIES.teamwork,
+        TECHNOLOGIES.problem_solving,
+        TECHNOLOGIES.learning,
+        TECHNOLOGIES.communication
       ]
     }
   ]
