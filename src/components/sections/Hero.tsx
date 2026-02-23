@@ -78,9 +78,14 @@ export default function Hero() {
             {/* Minimalist Top Brand Bar */}
             <div className="fixed top-0 left-0 w-full z-50 px-4 py-4 md:px-6 md:py-6 flex justify-between items-center pointer-events-none">
                 <div className="flex items-center gap-4 pointer-events-auto">
-                    <h2 className="text-xl md:text-2xl font-bold font-magilo text-white tracking-tighter hover:text-amber-400 transition-colors cursor-default">
+                    <motion.h2 
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.5, delay: 0.5 }}
+                        className="text-xl md:text-2xl font-bold font-magilo text-white tracking-tighter hover:text-amber-400 transition-colors cursor-default"
+                    >
                         Teizred
-                    </h2>
+                    </motion.h2>
                 </div>
             </div>
 
@@ -144,17 +149,19 @@ export default function Hero() {
                         className="absolute inset-0 bg-amber-400/20 z-0"
                     />
                     {sections.map(({ id, label }) => (
-                        <button
+                        <motion.button
                             key={id}
                             onClick={() => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })}
-                            className={`flex-1 py-1 md:py-1.5 rounded-full text-[10px] md:text-sm font-bold font-montserrat cursor-pointer transition-all duration-300 relative z-10 whitespace-nowrap text-center ${
+                            animate={activeId === id ? { scale: [1, 1.05, 1] } : { scale: 1 }}
+                            transition={activeId === id ? { repeat: Infinity, duration: 2, ease: "easeInOut" } : { duration: 0.3 }}
+                            className={`flex-1 py-1 md:py-1.5 rounded-full text-[10px] md:text-sm font-bold font-montserrat cursor-pointer transition-colors duration-300 relative z-10 whitespace-nowrap text-center ${
                                 activeId === id 
-                                    ? 'bg-amber-400 text-black scale-105 shadow-md' 
+                                    ? 'bg-amber-400 text-black shadow-md' 
                                     : 'text-white/70 hover:text-amber-400'
                             }`}
                         >
                             {label}
-                        </button>
+                        </motion.button>
                     ))}
                 </motion.div>
 
