@@ -1,10 +1,46 @@
 import { TECHNOLOGIES, type TechItem } from "@/data/technologies";
+import { motion } from "framer-motion";
 
 interface SkillCategory {
   title: string;
   description: string;
   technologies: TechItem[];
 }
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2
+    }
+  }
+} as const;
+
+const itemVariants = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut"
+    }
+  }
+} as const;
+
+const badgeVariants = {
+  hidden: { scale: 0.8, opacity: 0 },
+  visible: {
+    scale: 1,
+    opacity: 1,
+    transition: {
+      type: "spring",
+      stiffness: 260,
+      damping: 20
+    }
+  }
+} as const;
 
 export default function Skills() {
   const skillCategories: SkillCategory[] = [
@@ -28,7 +64,7 @@ export default function Skills() {
         TECHNOLOGIES.nodejs,
         TECHNOLOGIES.expressjs,
         TECHNOLOGIES.postgresql,
-        TECHNOLOGIES.supabase
+        TECHNOLOGIES.supabase,
       ]
     },
     {
@@ -59,24 +95,46 @@ export default function Skills() {
     <section id="skills" className="relative min-h-screen w-full px-8 py-20 text-white">
       <div className="max-w-6xl mx-auto">
         <div className="relative z-10">
-          <h2 className="text-5xl md:text-6xl font-bold font-magilo text-amber-400 text-center mb-8">
+          <motion.h2 
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-5xl md:text-6xl font-bold font-magilo text-amber-400 text-center mb-8"
+          >
             Mes Compétences
-          </h2>
+          </motion.h2>
           
-          <div className="grid md:grid-cols-2 gap-8">
+          <motion.div 
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            className="grid md:grid-cols-2 gap-8"
+          >
             {skillCategories.map((category, index) => (
-              <div 
+              <motion.div 
                 key={index}
+                variants={itemVariants}
+                whileHover={{ y: -5, transition: { duration: 0.2 } }}
                 className="bg-white/5 backdrop-blur-sm border border-white rounded-lg p-8 hover:border-amber-400 transition-colors"
               >
                 <h3 className="text-5xl text-center font-bold font-magilo text-white mb-3">{category.title}</h3>
                 <p className="text-2xl text-white font-medium text-center mb-6 font-montserrat">{category.description}</p>
-                <div className="flex flex-wrap gap-3 justify-center">
+                <motion.div 
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  transition={{ staggerChildren: 0.05 }}
+                  className="flex flex-wrap gap-3 justify-center"
+                >
                   {category.technologies.map((tech, i) => {
                     const IconComponent = tech.component;
                     return (
-                      <span 
+                      <motion.span 
                         key={i}
+                        variants={badgeVariants}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
                         className="flex items-center gap-2 px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-semibold border border-amber-400/40 text-amber-300 bg-amber-400/5 font-montserrat hover:border-amber-400 hover:bg-amber-400/10 transition-all duration-300 cursor-default group"
                       >
                         {tech.icon && (
@@ -90,13 +148,13 @@ export default function Skills() {
                           <IconComponent size={20} weight="duotone" className="group-hover:scale-110 transition-transform" />
                         )}
                         {tech.name}
-                      </span>
+                      </motion.span>
                     );
                   })}
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

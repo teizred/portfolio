@@ -4,6 +4,29 @@ import image2 from "/2.png"
 import image3 from "/3.png"
 import image4 from "/4.png"
 import image5 from "/5.png"
+import { motion } from "framer-motion"
+
+const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.1
+        }
+    }
+} as const;
+
+const cardVariants = {
+    hidden: { y: 30, opacity: 0 },
+    visible: {
+        y: 0,
+        opacity: 1,
+        transition: {
+            duration: 0.6,
+            ease: "easeOut"
+        }
+    }
+} as const;
 
 export default function Projets() {
     const projetsCatagories = [
@@ -42,7 +65,7 @@ export default function Projets() {
         {
             title: 'Salaire-Calcul',
             description: 'SalaireCalcul est une application web moderne qui vous permet de convertir le prix de n\'importe quel produit en heures de travail, basées sur votre salaire horaire ou le SMIC. Elle inclut également des données d\'inflation en temps réel pour vous donner le "vrai" coût de la vie.',
-            technologies: [TECHNOLOGIES.html, TECHNOLOGIES.javascript, TECHNOLOGIES.react, TECHNOLOGIES.typescript, TECHNOLOGIES.tailwindcss, TECHNOLOGIES.expressjs, TECHNOLOGIES.nodejs],
+            technologies: [TECHNOLOGIES.html, TECHNOLOGIES.javascript, TECHNOLOGIES.react, TECHNOLOGIES.typescript, TECHNOLOGIES.tailwindcss],
             image: image4,
             link: 'https://github.com/teizred/salaire-calcul',
             demo: 'https://salaire-calculette.vercel.app'
@@ -51,21 +74,47 @@ export default function Projets() {
     return (
         <section id="projects" className="relative min-h-screen bg-transparent w-full px-8 py-20">
             <div className="max-w-6xl mx-auto relative z-10">
-                <h1 className="text-5xl md:text-6xl font-bold font-magilo text-amber-400 text-center mb-8">
-                    Mes Projets</h1>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <motion.h1 
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    className="text-5xl md:text-6xl font-bold font-magilo text-amber-400 text-center mb-8"
+                >
+                    Mes Projets</motion.h1>
+                <motion.div 
+                    variants={containerVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                >
                     {/* Project cards will go here */}
                     {projetsCatagories.map((projet) => (
-                        <div key={projet.title} className="bg-white/10  backdrop-blur-md  rounded-xl p-6 border border-white/10 hover:border-amber-400 transition-colors duration-300">
-                            <img src={projet.image} alt={projet.title} className="w-full h-48 object-cover rounded-lg mb-4" />
+                        <motion.div 
+                            key={projet.title} 
+                            variants={cardVariants}
+                            whileHover={{ y: -10 }}
+                            className="bg-white/10  backdrop-blur-md  rounded-xl p-6 border border-white/10 hover:border-amber-400 transition-colors duration-300 group/card"
+                        >
+                            <div className="overflow-hidden rounded-lg mb-4">
+                                <motion.img 
+                                    src={projet.image} 
+                                    alt={projet.title} 
+                                    className="w-full h-48 object-cover" 
+                                />
+                            </div>
                             <h2 className="text-2xl font-bold font-magilo text-amber-400 mb-2">{projet.title}</h2>
-                            <p className="text-white mb-4">{projet.description}</p>
-                            <div className="flex flex-wrap gap-2 mb-4">
+                            <p className="text-white mb-4 group-hover/card:line-clamp-none transition-all duration-300">{projet.description}</p>
+                            <div className="flex flex-wrap gap-2 mb-6">
                                 {projet.technologies.map((tech, i) => {
                                     const IconComponent = tech?.component;
                                     return tech ? (
-                                      <span 
+                                      <motion.span 
                                         key={i} 
+                                        initial={{ opacity: 0, scale: 0.8 }}
+                                        whileInView={{ opacity: 1, scale: 1 }}
+                                        viewport={{ once: true }}
+                                        transition={{ delay: i * 0.1 }}
                                         className="flex items-center gap-2 px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-semibold border border-amber-400/40 text-amber-300 bg-amber-400/5 font-montserrat hover:border-amber-400 hover:bg-amber-400/10 transition-all duration-300 cursor-default group"
                                       >
                                           {tech.icon && (
@@ -79,23 +128,37 @@ export default function Projets() {
                                               <IconComponent size={16} weight="duotone" className="group-hover:scale-110 transition-transform" />
                                           )}
                                           {tech.name}
-                                      </span>
+                                      </motion.span>
                                     ) : null;
                                 })}
                             </div>
-                            <div className="flex gap-2">
-                                <a href={projet.link} target="_blank" rel="noopener noreferrer" className="bg-amber-400 text-black px-4 py-2 rounded-full hover:text-gray-300 transition-colors font-magilo inline-block">
+                            <div className="flex gap-4 mt-auto">
+                                <motion.a 
+                                    href={projet.link} 
+                                    target="_blank" 
+                                    rel="noopener noreferrer" 
+                                    whileHover={{ scale: 1.05 }}
+                                    whileTap={{ scale: 0.95 }}
+                                    className="bg-amber-400 text-black px-4 py-2 rounded-full hover:bg-amber-500 transition-colors font-magilo inline-block text-sm"
+                                >
                                     Voir le projet
-                                </a>
+                                </motion.a>
                                 {projet.demo && (
-                                    <a href={projet.demo} target="_blank" rel="noopener noreferrer" className="bg-amber-400 text-black px-4 py-2 rounded-full hover:text-gray-300 transition-colors font-magilo inline-block">
+                                    <motion.a 
+                                        href={projet.demo} 
+                                        target="_blank" 
+                                        rel="noopener noreferrer" 
+                                        whileHover={{ scale: 1.05 }}
+                                        whileTap={{ scale: 0.95 }}
+                                        className="bg-amber-400 text-black px-4 py-2 rounded-full hover:bg-amber-500 transition-colors font-magilo inline-block text-sm"
+                                    >
                                         Voir la démo
-                                    </a>
+                                    </motion.a>
                                 )}
                             </div>
-                        </div>
+                        </motion.div>
                     ))}
-                </div>
+                </motion.div>
             </div>
         </section>
     );

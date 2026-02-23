@@ -4,6 +4,7 @@ import {
   GraduationCap,
   ChatCircleText,
 } from "phosphor-react";
+import apiIcon from "../assets/icons/api.png";
 
 export interface TechItem {
   name: string;
@@ -53,7 +54,7 @@ export const TECHNOLOGIES: Record<string, TechItem> = {
     icon: "https://svgl.app/library/postgresql.svg",
   },
   supabase: { name: "Supabase", icon: "https://svgl.app/library/supabase.svg" },
-  api: { name: "API" },
+  api: { name: "API", icon: apiIcon },
 
   // Outils & Workflow
   git: { name: "Git", icon: "https://svgl.app/library/git.svg" },
@@ -69,6 +70,8 @@ export const TECHNOLOGIES: Record<string, TechItem> = {
   figma: { name: "Figma", icon: "https://svgl.app/library/figma.svg" },
   docker: { name: "Docker", icon: "https://svgl.app/library/docker.svg" },
   railway: { name: "Railway", icon: "https://svgl.app/library/railway.svg", invert: true },
+
+  
 
   // Soft Skills
   teamwork: { name: "Travail d'équipe", component: UsersThree },
