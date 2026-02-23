@@ -39,7 +39,8 @@ export default function Skills() {
         TECHNOLOGIES.github,
         TECHNOLOGIES.vscode,
         TECHNOLOGIES.figma,
-        TECHNOLOGIES.docker
+        TECHNOLOGIES.docker,
+        TECHNOLOGIES.railway
       ]
     },
     {
