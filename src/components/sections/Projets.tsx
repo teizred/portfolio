@@ -139,7 +139,7 @@ export default function Projets() {
                                     rel="noopener noreferrer" 
                                     whileHover={{ scale: 1.05 }}
                                     whileTap={{ scale: 0.95 }}
-                                    className="bg-amber-400 text-black px-4 py-2 rounded-full hover:bg-amber-300 transition-colors duration-300 font-montserrat font-bold inline-block text-sm"
+                                    className="bg-amber-400 text-black px-4 py-2 rounded-full hover:bg-amber-300 transition-colors duration-300 font-dm-serif font-bold inline-block text-sm"
                                 >
                                     Voir le projet
                                 </motion.a>
@@ -150,7 +150,7 @@ export default function Projets() {
                                         rel="noopener noreferrer" 
                                         whileHover={{ scale: 1.05 }}
                                         whileTap={{ scale: 0.95 }}
-                                        className="bg-amber-400 text-black px-4 py-2 rounded-full hover:bg-amber-300 transition-colors duration-300 font-montserrat font-bold inline-block text-sm"
+                                        className="bg-amber-400 text-black px-4 py-2 rounded-full hover:bg-amber-300 transition-colors duration-300 font-dm-serif font-bold inline-block text-sm"
                                     >
                                         Voir la démo
                                     </motion.a>

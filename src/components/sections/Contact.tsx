@@ -3,6 +3,7 @@ import emailjs from '@emailjs/browser';
 import githubIcon from '../../assets/icons/github.png';
 import linkedinIcon from '../../assets/icons/linkedin.png';
 import emailIcon from '../../assets/icons/email.png';
+import { ArrowRight } from 'phosphor-react';
 
 const EMAILJS_SERVICE_ID  = 'service_fhnw8fa';
 const EMAILJS_TEMPLATE_ID = 'template_ujxsbnr';
@@ -160,9 +161,11 @@ export default function Contact() {
                                 <button
                                     type="submit"
                                     disabled={status === 'sending'}
-                                    className="mt-2 bg-amber-400 text-black font-bold font-magilo px-6 py-3.5 rounded-full hover:bg-amber-300 transition-colors duration-300 w-full disabled:opacity-60 disabled:cursor-not-allowed"
+                                    className="group mt-2 bg-amber-400 text-black font-bold font-dm-serif px-6 py-3.5 rounded-full hover:bg-amber-300 transition-colors duration-300 w-full flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
                                 >
-                                    {status === 'sending' ? 'Envoi en cours...' : 'Envoyer le message →'}
+                                    {status === 'sending' ? 'Envoi en cours...' : (
+                                        <>Envoyer le message <span className="group-hover:translate-x-1.5 transition-transform duration-300"><ArrowRight size={20} weight="bold" /></span></>
+                                    )}
                                 </button>
                             </form>
                         )}

@@ -143,7 +143,7 @@ export default function Hero() {
                         href="/cv.pdf"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-block bg-amber-400 text-black font-bold font-magilo px-6 py-2 md:px-8 md:py-2.5 rounded-full hover:bg-amber-300 transition-colors duration-300 text-sm md:text-base shadow-lg"
+                        className="inline-block bg-amber-400 text-black font-bold font-dm-serif px-6 py-2 md:px-8 md:py-2.5 rounded-full hover:bg-amber-300 transition-colors duration-300 text-sm md:text-base shadow-lg"
                     >
                         Mon CV
                     </a>
@@ -166,12 +166,12 @@ export default function Hero() {
                         <div className="flex flex-wrap items-center justify-center md:justify-start gap-4">
                             <a
                                 href="#projects"
-                                className="group bg-amber-400 text-black font-bold font-magilo px-8 py-3.5 rounded-full hover:bg-amber-300 transition-colors duration-300 flex items-center gap-2">
+                                className="group bg-amber-400 text-black font-bold font-dm-serif px-8 py-3.5 rounded-full hover:bg-amber-300 transition-colors duration-300 flex items-center gap-2">
                                 Voir mes projets <span className="group-hover:translate-x-1.5 transition-transform duration-300"><ArrowRight size={20} weight="bold" /></span>
                             </a>
                             <a
                                 href="#contact"
-                                className="bg-white/10 backdrop-blur-md text-white font-bold font-magilo px-8 py-3.5 rounded-full border border-white/20 hover:border-amber-400 hover:text-amber-400 transition-all duration-300">
+                                className="bg-white/10 backdrop-blur-md text-white font-bold font-dm-serif px-8 py-3.5 rounded-full border border-white/20 hover:border-amber-400 hover:text-amber-400 transition-all duration-300">
                                 Me contacter
                             </a>
                             <a
@@ -207,7 +207,7 @@ export default function Hero() {
                     animate={{ opacity: navVisible ? 0 : 1, y: navVisible ? 20 : 0, pointerEvents: navVisible ? 'none' : 'auto' }}
                     transition={{ duration: 0.4 }}
                     onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
-                    className="group fixed bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 py-3 cursor-pointer rounded-full border-2 border-amber-400 backdrop-blur-md bg-black/30 z-50 font-montserrat font-bold text-white shadow-2xl hover:bg-amber-400/10 transition-colors w-[90%] max-w-[320px] md:max-w-[450px] flex justify-center items-center gap-2"
+                    className="group fixed bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 py-3 cursor-pointer rounded-full border-2 border-amber-400 backdrop-blur-md bg-black/30 z-50 font-dm-serif font-bold text-white shadow-2xl hover:bg-amber-400/10 transition-colors w-[90%] max-w-[320px] md:max-w-[450px] flex justify-center items-center gap-2"
                 >
                     Explorer 
                     <span className="group-hover:translate-y-1 transition-transform duration-300">
@@ -227,19 +227,20 @@ export default function Hero() {
                     transition={{ duration: 0.4, ease: "easeOut" }}
                     className="fixed bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 flex items-center px-1.5 py-1.5 md:px-2 md:py-2 rounded-full border-2 border-amber-400 backdrop-blur-md bg-black/30 z-50 overflow-hidden shadow-2xl w-[90%] max-w-[320px] md:max-w-[450px] justify-between"
                 >
-                    <motion.div
-                        animate={{ scaleX: progress }}
-                        transition={{ type: "spring", stiffness: 100, damping: 20 }}
-                        style={{ transformOrigin: 'left' }}
-                        className="absolute inset-0 bg-amber-400/20 z-0"
-                    />
+                    <div className="absolute inset-0 z-0 pointer-events-none">
+                        <motion.div
+                            animate={{ width: `${progress * 100}%` }}
+                            transition={{ type: "spring", stiffness: 100, damping: 20 }}
+                            className="bg-amber-400/20 rounded-full h-full"
+                        />
+                    </div>
                     {sections.map(({ id, label }) => (
                         <motion.button
                             key={id}
                             onClick={() => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })}
                             animate={activeId === id ? { scale: [1, 1.05, 1] } : { scale: 1 }}
                             transition={activeId === id ? { repeat: Infinity, duration: 2, ease: "easeInOut" } : { duration: 0.3 }}
-                            className={`flex-1 py-1 md:py-1.5 rounded-full text-[10px] md:text-sm font-bold font-montserrat cursor-pointer transition-colors duration-300 relative z-10 whitespace-nowrap text-center ${
+                            className={`flex-1 py-1 md:py-1.5 rounded-full text-[10px] md:text-sm font-bold font-dm-serif cursor-pointer transition-colors duration-300 relative z-10 whitespace-nowrap text-center ${
                                 activeId === id 
                                     ? 'bg-amber-400 text-black shadow-md' 
                                     : 'text-white/70 hover:text-amber-400'
