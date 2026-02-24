@@ -89,7 +89,7 @@ export default function Contact() {
 
                             {/* LinkedIn */}
                             <a
-                                href="https://linkedin.com/in/teizred"
+                                href="https://www.linkedin.com/in/jathurshan-suventhiran/"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="group flex items-center gap-4 bg-white/5 border border-white/10 rounded-2xl p-5 hover:border-amber-400/50 transition-all duration-300"
