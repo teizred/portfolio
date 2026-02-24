@@ -67,30 +67,33 @@ export default function Hero() {
     useEffect(() => {
         const observer = new IntersectionObserver(
             (entries) => {
+                // On met à jour l'ID actif uniquement si la section traverse le milieu (20% central) de l'écran
                 entries.forEach((entry) => {
-                    // On utilise threshold 0 pour que ça s'active dès que la section touche la zone
                     if (entry.isIntersecting) {
                         setActiveId(entry.target.id);
                         setNavVisible(entry.target.id !== 'hero');
                     }
                 });
             },
-            // Zone de détection très large pour mobile : de 2% en haut à 80% en bas.
-            // Cela permet de capter la section dès qu'elle entre majoritairement à l'écran.
-            { threshold: 0, rootMargin: "-2% 0% -20% 0%" }
+            // Zone de détection très stricte : au milieu de l'écran (du haut 40% au bas 40%)
+            // Empêche de détecter "About" et "Hero" en même temps
+            { threshold: 0, rootMargin: "-40% 0px -40% 0px" }
         );
 
-        // On observe chaque section définie dans notre tableau
-        sections.forEach(({ id }) => {
-            const el = document.getElementById(id);
-            if (el) observer.observe(el);
-        });
-        
-        // On observe explicitement hero car il a été retiré du tableau sections
-        const heroEl = document.getElementById('hero');
-        if (heroEl) observer.observe(heroEl);
+        // Petit délai pour s'assurer que toutes les autres sections du DOM sont prêtes avant observation
+        const timeoutId = setTimeout(() => {
+            sections.forEach(({ id }) => {
+                const el = document.getElementById(id);
+                if (el) observer.observe(el);
+            });
+            const heroEl = document.getElementById('hero');
+            if (heroEl) observer.observe(heroEl);
+        }, 100);
 
-        return () => observer.disconnect();
+        return () => {
+            clearTimeout(timeoutId);
+            observer.disconnect();
+        };
     }, []);
 
     return (
