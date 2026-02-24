@@ -14,7 +14,6 @@ const DELETING_SPEED = 70;
 const PAUSE = 2000;
 
 const sections = [
-  { id: 'hero', label: 'Home' },
   { id: 'about', label: 'About' },
   { id: 'skills', label: 'Skills' },
   { id: 'projects', label: 'Projects' },
@@ -96,11 +95,13 @@ export default function Hero() {
             <div className="fixed top-0 left-0 w-full z-50 px-4 py-4 md:px-6 md:py-6 flex justify-between items-center pointer-events-none">
                 <div className="flex items-center gap-2 pointer-events-auto overflow-hidden">
                     <motion.a 
-                        href="/"
+                        onClick={(e) => { e.preventDefault(); document.getElementById('hero')?.scrollIntoView({ behavior: 'smooth' }); }}
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.5, delay: 0.3 }}
-                        className="text-xl md:text-2xl font-bold font-magilo text-white tracking-tighter hover:text-amber-400 transition-colors cursor-pointer"
+                        className={`text-xl md:text-2xl font-bold font-magilo tracking-tighter transition-colors cursor-pointer ${
+                            activeId === 'hero' ? 'text-white' : 'text-white hover:text-amber-400'
+                        }`}
                     >
                         Teizred
                     </motion.a>
