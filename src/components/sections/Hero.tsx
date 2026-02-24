@@ -95,14 +95,15 @@ export default function Hero() {
             {/* Minimalist Top Brand Bar */}
             <div className="fixed top-0 left-0 w-full z-50 px-4 py-4 md:px-6 md:py-6 flex justify-between items-center pointer-events-none">
                 <div className="flex items-center gap-2 pointer-events-auto overflow-hidden">
-                    <motion.h2 
+                    <motion.a 
+                        href="/"
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.5, delay: 0.3 }}
-                        className="text-xl md:text-2xl font-bold font-magilo text-white tracking-tighter hover:text-amber-400 transition-colors cursor-default"
+                        className="text-xl md:text-2xl font-bold font-magilo text-white tracking-tighter hover:text-amber-400 transition-colors cursor-pointer"
                     >
                         Teizred
-                    </motion.h2>
+                    </motion.a>
 
                     <motion.span
                         initial={{ opacity: 0, x: -20 }}
