@@ -85,6 +85,10 @@ export default function Hero() {
             const el = document.getElementById(id);
             if (el) observer.observe(el);
         });
+        
+        // On observe explicitement hero car il a été retiré du tableau sections
+        const heroEl = document.getElementById('hero');
+        if (heroEl) observer.observe(heroEl);
 
         return () => observer.disconnect();
     }, []);
