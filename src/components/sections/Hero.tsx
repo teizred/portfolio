@@ -157,7 +157,7 @@ export default function Hero() {
                     {/* Left: Text */}
                     <div className="w-full md:w-1/2 mb-4 md:mb-0 fade-in visible text-center md:text-left">
                         <h1 className="text-5xl md:text-8xl font-bold mb-6 font-magilo">
-                            Développeur Web Full Stack<br />
+                            Full Stack Web Developer<br />
                             <span className="text-amber-400">{typedWord}<span className="animate-pulse">|</span></span>
                         </h1>
                         <p className="text-xl md:text-2xl mb-10 font-montserrat">
