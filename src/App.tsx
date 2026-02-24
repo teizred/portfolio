@@ -11,13 +11,13 @@ function App() {
   return (
     <>
     <div className="min-h-screen bg-linear-to-r from-[#b6764e] via-[#3a465a] to-[#0b1220]">
-    <Hero />
-    <About />
-    <Skills />
-    <Projets />
-    <Contact />
-    {/* <Footer /> */}
-    <Analytics />
+      <Hero />
+      <About />
+      <Skills />
+      <Projets />
+      <Contact />
+      {/* <Footer /> */}
+      <Analytics />
     </div>
     </>
   )
