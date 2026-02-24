@@ -9,10 +9,6 @@ html {
   scroll-behavior: smooth;
 }
 
-section[id] {
-  scroll-margin-top: 5rem;
-}
-
 @theme {
   --font-magilo: "Magilo", sans-serif;
   --font-montserrat: "Montserrat", sans-serif;
