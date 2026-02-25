@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowDown, ArrowRight } from 'phosphor-react';
+import { ArrowDown, ArrowRight, DownloadSimple } from 'phosphor-react';
 
 const STATUS_WORDS = [
   "Disponible en alternance",
@@ -146,9 +146,10 @@ export default function Hero() {
                         href="/cv.pdf"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-block bg-amber-400 text-black font-bold font-dm-serif px-6 py-2 md:px-8 md:py-2.5 rounded-full hover:bg-amber-300 transition-colors duration-300 text-sm md:text-base shadow-lg"
+                        className="inline-flex items-center gap-2 bg-amber-400 text-black font-bold font-dm-serif px-6 py-2 md:px-8 md:py-2.5 rounded-full hover:bg-amber-300 transition-colors duration-300 text-sm md:text-base shadow-lg"
                     >
                         Mon CV
+                        <DownloadSimple size={20} weight="bold" />
                     </a>
                 </motion.div>
             </div>
