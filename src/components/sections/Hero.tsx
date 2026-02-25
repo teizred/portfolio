@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowDown, ArrowRight, DownloadSimple } from 'phosphor-react';
+import { containerVariants, itemVariants } from '../../animations';
 
 const STATUS_WORDS = [
   "Disponible en alternance",
@@ -51,6 +52,12 @@ export default function Hero() {
     const [activeId, setActiveId] = useState('hero');
     const [navVisible, setNavVisible] = useState(false);
     const [statusIndex, setStatusIndex] = useState(0);
+    const [hasEntered, setHasEntered] = useState(false);
+
+    useEffect(() => {
+        const timeout = setTimeout(() => setHasEntered(true), 1500);
+        return () => clearTimeout(timeout);
+    }, []);
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -156,18 +163,34 @@ export default function Hero() {
 
             <section id="hero" className="relative min-h-screen w-full flex items-center justify-center text-white overflow-hidden pt-28 pb-32 md:py-0">
 
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 flex flex-col-reverse md:flex-row items-center gap-6 md:gap-16">
+                <motion.div 
+                    variants={containerVariants}
+                    initial="hidden"
+                    animate="visible"
+                    className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 flex flex-col-reverse md:flex-row items-center gap-6 md:gap-16"
+                >
 
                     {/* Left: Text */}
-                    <div className="w-full md:w-1/2 mb-4 md:mb-0 fade-in visible text-center md:text-left">
-                        <h1 className="text-5xl md:text-8xl font-bold mb-6 font-magilo">
+                    <div className="w-full md:w-1/2 mb-4 md:mb-0 text-center md:text-left">
+                        <motion.h1 
+                            variants={itemVariants}
+                            className="text-5xl md:text-8xl font-bold mb-6 font-magilo"
+                        >
                             Full Stack Web Developer<br />
                             <span className="text-amber-400">{typedWord}<span className="animate-pulse">|</span></span>
-                        </h1>
-                        <p className="text-xl md:text-2xl mb-10 font-montserrat">
+                        </motion.h1>
+                        
+                        <motion.p 
+                            variants={itemVariants}
+                            className="text-xl md:text-2xl mb-10 font-montserrat"
+                        >
                             Je conçois des applications modernes, performantes et centrées sur l'utilisateur, en transformant des idées en solutions concrètes.
-                        </p>
-                        <div className="flex flex-wrap items-center justify-center md:justify-start gap-4">
+                        </motion.p>
+                        
+                        <motion.div 
+                            variants={itemVariants}
+                            className="flex flex-wrap items-center justify-center md:justify-start gap-4"
+                        >
                             <a
                                 href="#projects"
                                 className="group bg-amber-400 text-black font-bold font-dm-serif px-8 py-3.5 rounded-full hover:bg-amber-300 transition-colors duration-300 flex items-center gap-2">
@@ -192,24 +215,31 @@ export default function Hero() {
                                 className="w-12 h-12 rounded-full bg-white/10 border border-white/20 flex items-center justify-center hover:border-amber-400 hover:bg-amber-400/10 transition-all duration-300">
                                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn" className="w-5 h-5" />
                             </a>
-                        </div>
+                        </motion.div>
                     </div>
 
                     {/* Right: Photo */}
-                    <div className="w-40 h-40 md:w-96 md:h-96 shrink-0 md:ml-40 self-center">
+                    <motion.div 
+                        variants={itemVariants}
+                        className="w-40 h-40 md:w-96 md:h-96 shrink-0 md:ml-40 self-center"
+                    >
                         <img
                             src="/me.JPG"
                             alt="Jathurshan Suventhiran"
                             className="w-full h-full object-cover rounded-full border-amber-400/70 shadow-2xl shadow-amber-400/20"
                         />
-                    </div>
+                    </motion.div>
 
-                </div>
+                </motion.div>
 
                 <motion.button
-                    initial={{ opacity: 1, y: 0 }}
-                    animate={{ opacity: navVisible ? 0 : 1, y: navVisible ? 20 : 0, pointerEvents: navVisible ? 'none' : 'auto' }}
-                    transition={{ duration: 0.4 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={hasEntered ? { 
+                        opacity: navVisible ? 0 : 1, 
+                        y: navVisible ? 20 : 0, 
+                        pointerEvents: navVisible ? 'none' : 'auto' 
+                    } : { opacity: 0, y: 20 }}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
                     onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
                     className="group fixed bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 border-2 border-amber-400 text-white font-bold font-dm-serif text-xl px-10 py-3.5 rounded-full backdrop-blur-md bg-black/30 z-50 shadow-2xl hover:bg-amber-400/10 transition-colors flex items-center justify-center gap-2 cursor-pointer"
                 >
@@ -227,8 +257,12 @@ export default function Hero() {
 
                 <motion.div 
                     initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: navVisible ? 1 : 0, y: navVisible ? 0 : 20, pointerEvents: navVisible ? 'auto' : 'none' }}
-                    transition={{ duration: 0.4, ease: "easeOut" }}
+                    animate={hasEntered ? { 
+                        opacity: navVisible ? 1 : 0, 
+                        y: navVisible ? 0 : 20, 
+                        pointerEvents: navVisible ? 'auto' : 'none' 
+                    } : { opacity: 0, y: 20 }}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
                     className="fixed bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 flex items-center px-1.5 py-1.5 md:px-2 md:py-2 rounded-full border-2 border-amber-400 backdrop-blur-md bg-black/30 z-50 overflow-hidden shadow-2xl w-[90%] max-w-[320px] md:max-w-[450px] justify-between"
                 >
                     <div className="absolute inset-0 z-0 pointer-events-none">

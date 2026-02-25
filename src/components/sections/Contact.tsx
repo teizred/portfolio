@@ -4,6 +4,8 @@ import githubIcon from '../../assets/icons/github.png';
 import linkedinIcon from '../../assets/icons/linkedin.png';
 import emailIcon from '../../assets/icons/email.png';
 import { ArrowRight } from 'phosphor-react';
+import { motion } from 'framer-motion';
+import { slowContainerVariants, itemVariants, defaultViewport } from "../../animations";
 
 const EMAILJS_SERVICE_ID  = 'service_fhnw8fa';
 const EMAILJS_TEMPLATE_ID = 'template_ujxsbnr';
@@ -33,30 +35,34 @@ export default function Contact() {
 
     return (
         <section id="contact" className="relative min-h-screen bg-transparent w-full px-6 md:px-8 pt-28 pb-20 flex items-start md:items-center">
-            <div className="max-w-5xl mx-auto w-full relative z-10">
-
+            <motion.div 
+                initial="hidden"
+                whileInView="visible"
+                viewport={defaultViewport}
+                variants={slowContainerVariants}
+                className="max-w-5xl mx-auto w-full relative z-10"
+            >
                 {/* Header */}
-                <div className="text-center mb-10 md:mb-16">
+                <motion.div variants={itemVariants} className="text-center mb-10 md:mb-16">
                     <h1 className="text-5xl md:text-6xl font-bold font-magilo text-amber-400 mb-4">
                         Contact
                     </h1>
                     <p className="text-white text-lg max-w-xl mx-auto">
                         Une question, une opportunité ou juste envie de discuter ? <br />Je suis disponible.
                     </p>
-                </div>
+                </motion.div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-
                     {/* Left: Info */}
                     <div className="flex flex-col gap-8">
-                        <div>
+                        <motion.div variants={itemVariants}>
                             <h2 className="text-2xl font-bold font-magilo text-white mb-2">Parlons-en</h2>
                             <p className="text-white leading-relaxed">
                                 Je suis actuellement disponible pour des opportunités en développement web — stages où alternances.
                             </p>
-                        </div>
+                        </motion.div>
 
-                        <div className="flex flex-col gap-4">
+                        <motion.div variants={itemVariants} className="flex flex-col gap-4">
                             {/* Email */}
                             <a
                                 href="mailto:jathurshan.suventhiran@gmail.com"
@@ -102,11 +108,11 @@ export default function Contact() {
                                     <p className="text-white font-medium">linkedin.com/in/jathurshan-suventhiran</p>
                                 </div>
                             </a>
-                        </div>
+                        </motion.div>
                     </div>
 
                     {/* Right: Form */}
-                    <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8">
+                    <motion.div variants={itemVariants} className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8">
                         {status === 'success' ? (
                             <div className="flex flex-col items-center justify-center h-full gap-4 py-16 text-center">
                                 <div className="text-5xl">🎉</div>
@@ -169,9 +175,9 @@ export default function Contact() {
                                 </button>
                             </form>
                         )}
-                    </div>
+                    </motion.div>
                 </div>
-            </div>
+            </motion.div>
         </section>
     );
 }

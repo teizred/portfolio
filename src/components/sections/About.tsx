@@ -1,3 +1,7 @@
+import { motion, animate, useInView, useMotionValue, useTransform } from 'framer-motion';
+import { useEffect, useRef } from 'react';
+import { slowContainerVariants, itemVariants, defaultViewport } from '../../animations';
+
 const badges = [
   { label: 'Curieux' },
   { label: 'Rigoureux' },
@@ -6,6 +10,28 @@ const badges = [
   { label: 'En amélioration' },
   { label: 'Problem solver' },
 ];
+
+function Counter({ value }: { value: string }) {
+  const numericValue = parseInt(value);
+  const suffix = value.replace(/[0-9]/g, '');
+  const count = useMotionValue(0);
+  const rounded = useTransform(count, (latest) => Math.round(latest));
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.5 });
+
+  useEffect(() => {
+    if (isInView) {
+      animate(count, numericValue, { duration: 2, ease: "easeOut" });
+    }
+  }, [isInView, numericValue, count]);
+
+  return (
+    <span ref={ref}>
+      <motion.span>{rounded}</motion.span>
+      {suffix}
+    </span>
+  );
+}
 
 export default function About() {
   const stats = [
@@ -16,34 +42,51 @@ export default function About() {
 
   return (
     <section id="about" className="relative min-h-screen bg-transparent w-full px-6 md:px-16 py-12 md:py-24">
-      <div className="max-w-4xl mx-auto relative z-10 flex flex-col items-center">
+      <motion.div 
+        initial="hidden"
+        whileInView="visible"
+        viewport={defaultViewport}
+        variants={slowContainerVariants}
+        className="max-w-4xl mx-auto relative z-10 flex flex-col items-center text-center"
+      >
         
         {/* Titre */}
-        <h2 className="text-5xl md:text-7xl font-bold text-amber-400 text-center mb-8 md:mb-10 font-magilo">
+        <motion.h2 
+          variants={itemVariants}
+          className="text-5xl md:text-7xl font-bold text-amber-400 mb-8 md:mb-10 font-magilo"
+        >
           À propos de moi
-        </h2>
+        </motion.h2>
 
-        {/* Bio Texte */}
-        <div className="text-center mb-10 md:mb-12 flex flex-col gap-4 md:gap-6">
-          <p className="text-white text-lg md:text-2xl font-montserrat leading-relaxed">
-            De la précision de la{' '}
-            <span className="text-amber-400 font-semibold underline decoration-amber-400/30 underline-offset-4">
-              Maroquinerie
-            </span>{' '}
-            au leadership en tant que{' '}
-            <span className="text-amber-400 font-semibold">Responsable des Ventes</span>,
-            mon parcours est guidé par l'exigence et le sens de l'organisation.
-          </p>
-          <p className="text-white text-base md:text-xl font-montserrat leading-relaxed max-w-3xl mx-auto">
-            Aujourd'hui en formation chez{' '}
-            <span className="text-amber-400 font-semibold">Ada Tech School</span>, j'applique cette rigueur au{' '}
-            <span className="text-amber-400 font-semibold">développement web full stack</span>. Passionné par la création d'applications utiles,
-            je transforme chaque projet en une opportunité de construire des solutions performantes et bien pensées.
-          </p>
-        </div>
+        {/* Bio Texte Staggered */}
+        <motion.p 
+          variants={itemVariants}
+          className="text-white text-lg md:text-2xl font-montserrat leading-relaxed mb-6"
+        >
+          De la précision de la{' '}
+          <span className="text-amber-400 font-semibold underline decoration-amber-400/30 underline-offset-4">
+            Maroquinerie
+          </span>{' '}
+          au leadership en tant que{' '}
+          <span className="text-amber-400 font-semibold">Responsable des Ventes</span>,
+          mon parcours est guidé par l'exigence et le sens de l'organisation.
+        </motion.p>
+
+        <motion.p 
+          variants={itemVariants}
+          className="text-white text-base md:text-xl font-montserrat leading-relaxed max-w-3xl mx-auto mb-10 md:mb-12"
+        >
+          Aujourd'hui en formation chez{' '}
+          <span className="text-amber-400 font-semibold">Ada Tech School</span>, j'applique cette rigueur au{' '}
+          <span className="text-amber-400 font-semibold">développement web full stack</span>. Passionné par la création d'applications utiles,
+          je transforme chaque projet en une opportunité de construire des solutions performantes et bien pensées.
+        </motion.p>
 
         {/* Badges de valeurs (Uniform Amber) */}
-        <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-10 md:mb-20">
+        <motion.div 
+          variants={itemVariants}
+          className="flex flex-wrap justify-center gap-2 md:gap-3 mb-10 md:mb-20"
+        >
           {badges.map((badge, i) => (
             <span
               key={i}
@@ -52,22 +95,27 @@ export default function About() {
               {badge.label}
             </span>
           ))}
-        </div>
+        </motion.div>
 
-        {/* Stats Cards (Original Style) */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full font-montserrat">
+        {/* Stats Cards (Now appearing as a single block) */}
+        <motion.div 
+          variants={itemVariants}
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full font-montserrat"
+        >
           {stats.map((stat, index) => (
             <div 
               key={index}
               className="bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg p-6 md:p-8 text-center hover:border-amber-400 hover:bg-white/10 transition-all duration-300"
             >
-              <div className="text-4xl md:text-5xl font-bold text-amber-400 mb-2">{stat.number}</div>
+              <div className="text-4xl md:text-5xl font-bold text-amber-400 mb-2">
+                <Counter value={stat.number} />
+              </div>
               <div className="text-xl md:text-2xl text-white">{stat.label}</div>
             </div>
           ))}
-        </div>
+        </motion.div>
 
-      </div>
+      </motion.div>
     </section>
   );
 }

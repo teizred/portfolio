@@ -5,28 +5,7 @@ import image3 from "/3.png"
 import image4 from "/4.png"
 import image5 from "/5.png"
 import { motion } from "framer-motion"
-
-const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-        opacity: 1,
-        transition: {
-            staggerChildren: 0.1
-        }
-    }
-} as const;
-
-const cardVariants = {
-    hidden: { y: 30, opacity: 0 },
-    visible: {
-        y: 0,
-        opacity: 1,
-        transition: {
-            duration: 0.6,
-            ease: "easeOut"
-        }
-    }
-} as const;
+import { slowContainerVariants, itemVariants, badgeVariants, defaultViewport } from "../../animations";
 
 export default function Projets() {
     const projetsCatagories = [
@@ -41,7 +20,7 @@ export default function Projets() {
         {
             title: 'Pertes (Work in Progress)',
             description: 'Application web de suivi des pertes produits par dictée vocale. L\'IA (GPT-4o-mini) parse automatiquement le français parlé et enregistre les données sur Neon PostgreSQL, avec ajustement manuel des quantités et export PDF / email. Conçue pour un usage terrain en restauration rapide, elle simplifie la saisie des pertes sans interaction clavier.',
-            technologies: [ TECHNOLOGIES.javascript, TECHNOLOGIES.react, TECHNOLOGIES.typescript, TECHNOLOGIES.tailwindcss, TECHNOLOGIES.expressjs, TECHNOLOGIES.railway],
+            technologies: [ TECHNOLOGIES.transcript, TECHNOLOGIES.react, TECHNOLOGIES.typescript, TECHNOLOGIES.tailwindcss, TECHNOLOGIES.expressjs, TECHNOLOGIES.railway],
             image: image2,
             link: 'https://github.com/teizred/web-speech-api',
             demo: 'https://web-speech-api-ai.vercel.app/'
@@ -73,48 +52,56 @@ export default function Projets() {
     ]
     return (
         <section id="projects" className="relative min-h-screen bg-transparent w-full px-8 py-20">
-            <div className="max-w-6xl mx-auto relative z-10">
+            <motion.div 
+                initial="hidden"
+                whileInView="visible"
+                viewport={defaultViewport}
+                variants={slowContainerVariants}
+                className="max-w-6xl mx-auto relative z-10"
+            >
                 <motion.h1 
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    className="text-5xl md:text-6xl font-bold font-magilo text-amber-400 text-center mb-8"
+                    variants={itemVariants}
+                    className="text-5xl md:text-6xl font-bold font-magilo text-amber-400 text-center mb-12"
                 >
-                    Mes Projets</motion.h1>
-                <motion.div 
-                    variants={containerVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-                >
-                    {/* Project cards will go here */}
+                    Mes Projets
+                </motion.h1>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {projetsCatagories.map((projet) => (
                         <motion.div 
                             key={projet.title} 
-                            variants={cardVariants}
-                            whileHover={{ y: -10 }}
-                            className="bg-white/10  backdrop-blur-md  rounded-xl p-6 border border-white/10 hover:border-amber-400 transition-colors duration-300 group/card"
+                            variants={itemVariants}
+                            className="bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/10 hover:border-amber-400 transition-colors duration-300 group/card flex flex-col h-full"
                         >
                             <div className="overflow-hidden rounded-lg mb-4">
-                                <motion.img 
+                                <img 
                                     src={projet.image} 
                                     alt={projet.title} 
                                     className="w-full h-48 object-cover" 
                                 />
                             </div>
                             <h2 className="text-2xl font-bold font-magilo text-amber-400 mb-2">{projet.title}</h2>
-                            <p className="text-white mb-4 group-hover/card:line-clamp-none transition-all duration-300">{projet.description}</p>
-                            <div className="flex flex-wrap gap-2 mb-6">
+                            <p className="text-white mb-6 leading-relaxed group-hover/card:line-clamp-none transition-all duration-300">{projet.description}</p>
+                            
+                            <motion.div 
+                                variants={{
+                                    visible: {
+                                        transition: {
+                                            staggerChildren: 0.05,
+                                            delayChildren: 0.2
+                                        }
+                                    }
+                                }}
+                                className="flex flex-wrap gap-2 mb-8"
+                            >
                                 {projet.technologies.map((tech, i) => {
                                     const IconComponent = tech?.component;
                                     return tech ? (
                                       <motion.span 
                                         key={i} 
-                                        initial={{ opacity: 0, scale: 0.8 }}
-                                        whileInView={{ opacity: 1, scale: 1 }}
-                                        viewport={{ once: true }}
-                                        transition={{ delay: i * 0.1 }}
+                                        variants={badgeVariants}
+                                        whileHover={{ scale: 1.05 }}
+                                        whileTap={{ scale: 0.95 }}
                                         className="flex items-center gap-2 px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-semibold border border-amber-400/40 text-amber-300 bg-amber-400/5 font-montserrat hover:border-amber-400 hover:bg-amber-400/10 transition-all duration-300 cursor-default group"
                                       >
                                           {tech.icon && (
@@ -131,7 +118,8 @@ export default function Projets() {
                                       </motion.span>
                                     ) : null;
                                 })}
-                            </div>
+                            </motion.div>
+
                             <div className="flex gap-4 mt-auto">
                                 <motion.a 
                                     href={projet.link} 
@@ -158,8 +146,8 @@ export default function Projets() {
                             </div>
                         </motion.div>
                     ))}
-                </motion.div>
-            </div>
+                </div>
+            </motion.div>
         </section>
     );
 }
