@@ -55,7 +55,7 @@ export default function About() {
           variants={itemVariants}
           className="text-5xl md:text-7xl font-bold text-amber-400 mb-8 md:mb-10 font-magilo"
         >
-          <span className="font-serif">À</span> propos de moi
+          Qui suis-je ?
         </motion.h2>
 
         {/* Bio Texte Staggered */}
