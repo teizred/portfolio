@@ -161,7 +161,7 @@ export default function Hero() {
                 </motion.div>
             </div>
 
-            <section id="hero" className="relative min-h-screen w-full flex items-center justify-center text-white overflow-hidden pt-28 pb-32 md:py-0">
+            <section id="hero" className="relative min-h-screen w-full flex items-center justify-center text-white overflow-hidden pt-28 pb-56 md:py-0">
 
                 <motion.div 
                     variants={containerVariants}
