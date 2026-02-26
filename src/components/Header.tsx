@@ -33,16 +33,16 @@ export default function Header({ activeId }: HeaderProps) {
         const minutes = date.getMinutes();
         const totalMinutes = hour * 60 + minutes;
 
-        if (totalMinutes >= 7 * 60 && totalMinutes < 9 * 60) return { emoji: "☕", text: "npm start day" };
-        if (totalMinutes >= 9 * 60 && totalMinutes < 12 * 60) return { emoji: "💻", text: "Git commit mode" };
-        if (totalMinutes >= 12 * 60 && totalMinutes < 14 * 60) return { emoji: "🍽️", text: "Lunch break" };
-        if (totalMinutes >= 14 * 60 && totalMinutes < 16 * 60 + 30) return { emoji: "⚡", text: "Feature building" };
-        if (totalMinutes >= 16 * 60 + 30 && totalMinutes < 18 * 60) return { emoji: "🧘", text: "Ctrl+R refresh" };
-        if (totalMinutes >= 18 * 60 && totalMinutes < 20 * 60) return { emoji: "📚", text: "Stack learning" };
-        if (totalMinutes >= 20 * 60 && totalMinutes < 21 * 60) return { emoji: "🍕", text: "Food break" };
-        if (totalMinutes >= 21 * 60 && totalMinutes < 22 * 60) return { emoji: "🔍", text: "Tech scouting" };
-        if (totalMinutes >= 22 * 60 && totalMinutes < 23 * 60) return { emoji: "🎯", text: "Night coding" };
-        return { emoji: "😴", text: "System sleep" };
+        if (totalMinutes >= 7 * 60 && totalMinutes < 9 * 60) return { emoji: "☕", text: "Café et warm-up" };
+        if (totalMinutes >= 9 * 60 && totalMinutes < 12 * 60) return { emoji: "💻", text: "Focus total sur le code" };
+        if (totalMinutes >= 12 * 60 && totalMinutes < 14 * 60) return { emoji: "🍽️", text: "Pause déjeuner" };
+        if (totalMinutes >= 14 * 60 && totalMinutes < 16 * 60 + 30) return { emoji: "⚡", text: "Build de features" };
+        if (totalMinutes >= 16 * 60 + 30 && totalMinutes < 18 * 60) return { emoji: "🧘", text: "Quick break" };
+        if (totalMinutes >= 18 * 60 && totalMinutes < 20 * 60) return { emoji: "📚", text: "Session apprentissage" };
+        if (totalMinutes >= 20 * 60 && totalMinutes < 21 * 60) return { emoji: "🍕", text: "Pause dîner (encore)" };
+        if (totalMinutes >= 21 * 60 && totalMinutes < 22 * 60) return { emoji: "🔍", text: "Veille techno" };
+        if (totalMinutes >= 22 * 60 && totalMinutes < 23 * 60) return { emoji: "🎯", text: "Dernier sprint" };
+        return { emoji: "😴", text: "Zzz... probablement" };
     };
 
     return (
@@ -90,11 +90,11 @@ export default function Header({ activeId }: HeaderProps) {
                 className="flex items-center gap-3 pointer-events-auto"
             >
                 <div className="hidden md:flex items-center gap-3 text-[10px] md:text-xs font-montserrat text-white/50 uppercase tracking-widest">
-                    <span className="hidden lg:inline">Paris, FR</span>
+                    <span className="text-white hidden lg:inline">Paris, FR</span>
                     <span className="text-white font-mono border-l border-white/20 pl-3">
                         {time.toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' })}
                     </span>
-                    <AnimatePresence mode="wait">
+                    <AnimatePresence mode="wait"> 
                         <motion.div
                             key={getStatus(time).text}
                             initial={{ opacity: 0, y: 5 }}
