@@ -68,20 +68,20 @@ export default function Skills() {
       >
         <motion.h2 
           variants={itemVariants}
-          className="text-5xl md:text-6xl font-bold font-magilo text-amber-400 text-center mb-12"
+          className="text-5xl md:text-6xl font-bold font-magilo text-amber-400 text-center mb-9"
         >
           Mes Compétences
         </motion.h2>
         
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-6">
           {skillCategories.map((category, index) => (
             <motion.div 
               key={index}
               variants={itemVariants}
-              className="bg-white/5 backdrop-blur-sm border border-white/20 rounded-xl p-8 transition-colors hover:border-amber-400/50"
+              className="bg-white/5 backdrop-blur-sm border border-white/20 rounded-xl p-7 transition-colors hover:border-amber-400/50"
             >
               <h3 className="text-4xl md:text-5xl text-center font-bold font-magilo text-white mb-3 tracking-tight">{category.title}</h3>
-              <p className="text-xl md:text-2xl text-white/80 font-medium text-center mb-8 font-montserrat leading-tight">{category.description}</p>
+              <p className="text-xl md:text-2xl text-white/80 font-medium text-center mb-5 font-montserrat leading-tight">{category.description}</p>
               
               <motion.div 
                 variants={{
