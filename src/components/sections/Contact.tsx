@@ -34,7 +34,7 @@ export default function Contact() {
     };
 
     return (
-        <section id="contact" className="relative min-h-screen bg-transparent w-full px-6 md:px-8 pt-28 pb-20 flex items-start md:items-center">
+        <section id="contact" className="relative min-h-screen bg-transparent w-full px-6 md:px-8 pt-16 pb-20 flex items-start md:items-center">
             <motion.div 
                 initial="hidden"
                 whileInView="visible"
@@ -43,8 +43,8 @@ export default function Contact() {
                 className="max-w-5xl mx-auto w-full relative z-10"
             >
                 {/* Header */}
-                <motion.div variants={itemVariants} className="text-center mb-10 md:mb-16">
-                    <h1 className="text-5xl md:text-6xl font-bold font-magilo text-amber-400 mb-4">
+                <motion.div variants={itemVariants} className="text-center mb-6 md:mb-10">
+                    <h1 className="text-5xl md:text-6xl font-bold font-magilo text-amber-400 mb-3">
                         Contact
                     </h1>
                     <p className="text-white text-lg max-w-xl mx-auto">
@@ -52,9 +52,9 @@ export default function Contact() {
                     </p>
                 </motion.div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
                     {/* Left: Info */}
-                    <div className="flex flex-col gap-8">
+                    <div className="flex flex-col gap-5">
                         <motion.div variants={itemVariants}>
                             <h2 className="text-2xl font-bold font-magilo text-white mb-2">Parlons-en</h2>
                             <p className="text-white leading-relaxed">
@@ -62,11 +62,11 @@ export default function Contact() {
                             </p>
                         </motion.div>
 
-                        <motion.div variants={itemVariants} className="flex flex-col gap-4">
+                        <motion.div variants={itemVariants} className="flex flex-col gap-3">
                             {/* Email */}
                             <a
                                 href="mailto:jathurshan.suventhiran@gmail.com"
-                                className="group flex items-center gap-4 bg-white/5 border border-white/10 rounded-2xl p-5 hover:border-amber-400/50 transition-all duration-300"
+                                className="group flex items-center gap-4 bg-white/5 border border-white/10 rounded-2xl p-4 hover:border-amber-400/50 transition-all duration-300"
                             >
                                 <div className="w-12 h-12 rounded-xl bg-amber-400/10 flex items-center justify-center text-amber-400 text-xl shrink-0 group-hover:bg-amber-400/20 transition-colors">
                                     <img src={emailIcon} alt="Email" className="w-6 h-6" />
@@ -82,7 +82,7 @@ export default function Contact() {
                                 href="https://github.com/teizred"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="group flex items-center gap-4 bg-white/5 border border-white/10 rounded-2xl p-5 hover:border-amber-400/50 transition-all duration-300"
+                                className="group flex items-center gap-4 bg-white/5 border border-white/10 rounded-2xl p-4 hover:border-amber-400/50 transition-all duration-300"
                             >
                                 <div className="w-12 h-12 rounded-xl bg-amber-400/10 flex items-center justify-center text-amber-400 text-xl shrink-0 group-hover:bg-amber-400/20 transition-colors">
                                     <img src={githubIcon} alt="GitHub" className="w-6 h-6" />
@@ -98,7 +98,7 @@ export default function Contact() {
                                 href="https://www.linkedin.com/in/jathurshan-suventhiran/"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="group flex items-center gap-4 bg-white/5 border border-white/10 rounded-2xl p-5 hover:border-amber-400/50 transition-all duration-300"
+                                className="group flex items-center gap-4 bg-white/5 border border-white/10 rounded-2xl p-4 hover:border-amber-400/50 transition-all duration-300"
                             >
                                 <div className="w-12 h-12 rounded-xl bg-amber-400/10 flex items-center justify-center text-amber-400 text-xl shrink-0 group-hover:bg-amber-400/20 transition-colors">
                                     <img src={linkedinIcon} alt="LinkedIn" className="w-6 h-6" />
@@ -112,7 +112,7 @@ export default function Contact() {
                     </div>
 
                     {/* Right: Form */}
-                    <motion.div variants={itemVariants} className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8">
+                    <motion.div variants={itemVariants} className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-6">
                         {status === 'success' ? (
                             <div className="flex flex-col items-center justify-center h-full gap-4 py-16 text-center">
                                 <div className="text-5xl">🎉</div>
