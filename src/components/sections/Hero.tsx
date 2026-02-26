@@ -119,16 +119,16 @@ export default function Hero() {
                             variants={itemVariants}
                             className="flex flex-wrap items-center justify-center md:justify-start gap-4"
                         >
-                            <a
-                                href="#projects"
-                                className="group bg-amber-400 text-black font-bold font-dm-serif px-8 py-3.5 rounded-full hover:bg-amber-300 transition-colors duration-300 flex items-center gap-2">
+                            <button
+                                onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+                                className="group bg-amber-400 text-black font-bold font-dm-serif px-8 py-3.5 rounded-full hover:bg-amber-300 transition-colors duration-300 flex items-center gap-2 cursor-pointer">
                                 Voir mes projets <span className="group-hover:translate-x-1.5 transition-transform duration-300"><ArrowRight size={20} weight="bold" /></span>
-                            </a>
-                            <a
-                                href="#contact"
-                                className="bg-white/10 backdrop-blur-md text-white font-bold font-dm-serif px-8 py-3.5 rounded-full border border-white/20 hover:border-amber-400 hover:text-amber-400 transition-all duration-300">
+                            </button>
+                            <button
+                                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                                className="bg-white/10 backdrop-blur-md text-white font-bold font-dm-serif px-8 py-3.5 rounded-full border border-white/20 hover:border-amber-400 hover:text-amber-400 transition-all duration-300 cursor-pointer">
                                 Me contacter
-                            </a>
+                            </button>
                             <a
                                 href="https://github.com/teizred"
                                 target="_blank"
