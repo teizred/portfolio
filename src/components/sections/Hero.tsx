@@ -161,7 +161,7 @@ export default function Hero() {
                 </motion.div>
             </div>
 
-            <section id="hero" className="relative min-h-screen w-full flex items-center justify-center text-white overflow-hidden pt-28 pb-56 md:py-0">
+            <section id="hero" className="relative min-h-screen w-full flex items-center justify-center text-white overflow-hidden pt-28 pb-36 md:py-0">
 
                 <motion.div 
                     variants={containerVariants}
@@ -177,7 +177,7 @@ export default function Hero() {
                             className="text-5xl md:text-8xl font-bold mb-6 font-magilo"
                         >
                             Full Stack Web Developer<br />
-                            <span className="text-amber-400">{typedWord}<span className="animate-pulse">|</span></span>
+                            <span className="text-amber-400 inline-block mt-2">{typedWord}<span className="animate-pulse">|</span></span>
                         </motion.h1>
                         
                         <motion.p 
