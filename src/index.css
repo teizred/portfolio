@@ -1,12 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap");
 @import "tailwindcss";
+@import "lenis/css";
 
-html {
-  scroll-behavior: smooth;
-}
-
-* {
-  scroll-behavior: smooth;
+html.lenis,
+html.lenis body {
+  height: auto;
 }
 
 @theme {

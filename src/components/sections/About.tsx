@@ -53,15 +53,15 @@ export default function About() {
         {/* Titre */}
         <motion.h2 
           variants={itemVariants}
-          className="text-5xl md:text-7xl font-bold text-amber-400 mb-8 md:mb-10 font-magilo"
+          className="text-5xl md:text-7xl font-bold text-amber-400 mb-6 md:mb-8 font-magilo"
         >
-          Qui suis-je ?
+          Qui suis-je
         </motion.h2>
 
         {/* Bio Texte Staggered */}
         <motion.p 
           variants={itemVariants}
-          className="text-white text-lg md:text-2xl font-montserrat leading-relaxed mb-6"
+          className="text-white text-lg md:text-2xl font-montserrat leading-relaxed mb-4"
         >
           De la précision de la{' '}
           <span className="text-amber-400 font-semibold underline decoration-amber-400/30 underline-offset-4">
@@ -74,7 +74,7 @@ export default function About() {
 
         <motion.p 
           variants={itemVariants}
-          className="text-white text-base md:text-xl font-montserrat leading-relaxed max-w-3xl mx-auto mb-10 md:mb-12"
+          className="text-white text-base md:text-xl font-montserrat leading-relaxed max-w-3xl mx-auto mb-6 md:mb-8"
         >
           Aujourd'hui en formation chez{' '}
           <span className="text-amber-400 font-semibold">Ada Tech School</span>, j'applique cette rigueur au{' '}
@@ -85,7 +85,7 @@ export default function About() {
         {/* Badges de valeurs (Uniform Amber) */}
         <motion.div 
           variants={itemVariants}
-          className="flex flex-wrap justify-center gap-2 md:gap-3 mb-10 md:mb-20"
+          className="flex flex-wrap justify-center gap-2 md:gap-3 mb-6 md:mb-8"
         >
           {badges.map((badge, i) => (
             <span
