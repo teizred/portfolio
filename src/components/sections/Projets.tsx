@@ -66,83 +66,88 @@ export default function Projets() {
                     Mes Projets
                 </motion.h1>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="flex flex-col gap-6">
                     {projetsCatagories.map((projet) => (
                         <motion.div 
                             key={projet.title} 
                             variants={itemVariants}
-                            className="bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/10 hover:border-amber-400 transition-colors duration-300 group/card flex flex-col h-full"
+                            className="bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 hover:border-amber-400/60 transition-all duration-500 group/card flex flex-col md:flex-row overflow-hidden"
                         >
-                            <div className="overflow-hidden rounded-lg mb-4">
+                            {/* Image */}
+                            <div className="md:w-[40%] shrink-0 overflow-hidden">
                                 <img 
                                     src={projet.image} 
                                     alt={projet.title} 
-                                    className="w-full h-48 object-cover" 
+                                    className="w-full h-56 md:h-full object-cover" 
                                 />
                             </div>
-                            <h2 className="text-2xl font-bold font-magilo text-amber-400 mb-2">{projet.title}</h2>
-                            <p className="text-white mb-6 leading-relaxed group-hover/card:line-clamp-none transition-all duration-300">{projet.description}</p>
-                            
-                            <motion.div 
-                                variants={{
-                                    visible: {
-                                        transition: {
-                                            staggerChildren: 0.05,
-                                            delayChildren: 0.2
-                                        }
-                                    }
-                                }}
-                                className="flex flex-wrap gap-2 mb-8"
-                            >
-                                {projet.technologies.map((tech, i) => {
-                                    const IconComponent = tech?.component;
-                                    return tech ? (
-                                      <motion.span 
-                                        key={i} 
-                                        variants={badgeVariants}
-                                        whileHover={{ scale: 1.05 }}
-                                        whileTap={{ scale: 0.95 }}
-                                        className="flex items-center gap-2 px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-semibold border border-amber-400/40 text-amber-300 bg-amber-400/5 font-montserrat hover:border-amber-400 hover:bg-amber-400/10 transition-all duration-300 cursor-default group"
-                                      >
-                                          {tech.icon && (
-                                              <img 
-                                                src={tech.icon} 
-                                                alt={tech.name} 
-                                                className={`w-3.5 h-3.5 md:w-4 md:h-4 object-contain group-hover:scale-110 transition-transform ${tech.invert ? 'invert' : ''}`}
-                                              />
-                                          )}
-                                          {IconComponent && (
-                                              <IconComponent size={16} weight="duotone" className="group-hover:scale-110 transition-transform" />
-                                          )}
-                                          {tech.name}
-                                      </motion.span>
-                                    ) : null;
-                                })}
-                            </motion.div>
 
-                            <div className="flex gap-4 mt-auto">
-                                <motion.a 
-                                    href={projet.link} 
-                                    target="_blank" 
-                                    rel="noopener noreferrer" 
-                                    whileHover={{ scale: 1.05 }}
-                                    whileTap={{ scale: 0.95 }}
-                                    className="bg-amber-400 text-black px-4 py-2 rounded-full hover:bg-amber-300 transition-colors duration-300 font-dm-serif font-bold inline-block text-sm"
+                            {/* Content */}
+                            <div className="flex flex-col justify-center p-6 md:p-8 md:w-[60%]">
+                                <h2 className="text-2xl md:text-3xl font-bold font-magilo text-amber-400 mb-3">{projet.title}</h2>
+                                <p className="text-white/80 mb-5 leading-relaxed text-sm md:text-base">{projet.description}</p>
+                                
+                                <motion.div 
+                                    variants={{
+                                        visible: {
+                                            transition: {
+                                                staggerChildren: 0.05,
+                                                delayChildren: 0.2
+                                            }
+                                        }
+                                    }}
+                                    className="flex flex-wrap gap-2 mb-6"
                                 >
-                                    Voir le projet
-                                </motion.a>
-                                {projet.demo && (
+                                    {projet.technologies.map((tech, i) => {
+                                        const IconComponent = tech?.component;
+                                        return tech ? (
+                                          <motion.span 
+                                            key={i} 
+                                            variants={badgeVariants}
+                                            whileHover={{ scale: 1.05 }}
+                                            whileTap={{ scale: 0.95 }}
+                                            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold border border-amber-400/40 text-amber-300 bg-amber-400/5 font-montserrat hover:border-amber-400 hover:bg-amber-400/10 transition-all duration-300 cursor-default group"
+                                          >
+                                              {tech.icon && (
+                                                  <img 
+                                                    src={tech.icon} 
+                                                    alt={tech.name} 
+                                                    className={`w-3.5 h-3.5 object-contain group-hover:scale-110 transition-transform ${tech.invert ? 'invert' : ''}`}
+                                                  />
+                                              )}
+                                              {IconComponent && (
+                                                  <IconComponent size={14} weight="duotone" className="group-hover:scale-110 transition-transform" />
+                                              )}
+                                              {tech.name}
+                                          </motion.span>
+                                        ) : null;
+                                    })}
+                                </motion.div>
+
+                                <div className="flex gap-3">
                                     <motion.a 
-                                        href={projet.demo} 
+                                        href={projet.link} 
                                         target="_blank" 
                                         rel="noopener noreferrer" 
                                         whileHover={{ scale: 1.05 }}
                                         whileTap={{ scale: 0.95 }}
-                                        className="bg-amber-400 text-black px-4 py-2 rounded-full hover:bg-amber-300 transition-colors duration-300 font-dm-serif font-bold inline-block text-sm"
+                                        className="bg-amber-400 text-black px-5 py-2 rounded-full hover:bg-amber-300 transition-colors duration-300 font-dm-serif font-bold inline-block text-sm"
                                     >
-                                        Voir la démo
+                                        Voir le projet
                                     </motion.a>
-                                )}
+                                    {projet.demo && (
+                                        <motion.a 
+                                            href={projet.demo} 
+                                            target="_blank" 
+                                            rel="noopener noreferrer" 
+                                            whileHover={{ scale: 1.05 }}
+                                            whileTap={{ scale: 0.95 }}
+                                            className="bg-white/10 text-white px-5 py-2 rounded-full border border-white/20 hover:border-amber-400 hover:text-amber-400 transition-all duration-300 font-dm-serif font-bold inline-block text-sm"
+                                        >
+                                            Voir la démo
+                                        </motion.a>
+                                    )}
+                                </div>
                             </div>
                         </motion.div>
                     ))}
