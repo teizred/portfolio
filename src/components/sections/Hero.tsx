@@ -1,13 +1,9 @@
 import { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowDown, ArrowRight, DownloadSimple } from 'phosphor-react';
+import { motion } from 'framer-motion';
+import { ArrowRight } from 'phosphor-react';
 import { containerVariants, itemVariants } from '../../animations';
-
-const STATUS_WORDS = [
-  "Disponible en alternance",
-  "Curieux & créatif",
-  "Open to work",
-]
+import Header from '../Header';
+import FloatingNav from '../FloatingNav';
 
 const WORD = 'Junior';
 const TYPING_SPEED = 100;
@@ -51,20 +47,12 @@ export default function Hero() {
     const typedWord = useTypingLoop();
     const [activeId, setActiveId] = useState('hero');
     const [navVisible, setNavVisible] = useState(false);
-    const [statusIndex, setStatusIndex] = useState(0);
     const [hasEntered, setHasEntered] = useState(false);
 
     useEffect(() => {
         const timeout = setTimeout(() => setHasEntered(true), 1500);
         return () => clearTimeout(timeout);
     }, []);
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setStatusIndex(prev => (prev + 1) % STATUS_WORDS.length)
-        }, 3000)
-        return () => clearInterval(interval)
-    }, [])
 
     // Calcul simple de la progression : index de la section / nombre total
     const activeIndex = sections.findIndex(s => s.id === activeId);
@@ -74,7 +62,6 @@ export default function Hero() {
     useEffect(() => {
         const observer = new IntersectionObserver(
             (entries) => {
-                // On met à jour l'ID actif uniquement si la section traverse le milieu (20% central) de l'écran
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
                         setActiveId(entry.target.id);
@@ -82,12 +69,9 @@ export default function Hero() {
                     }
                 });
             },
-            // Zone de détection très stricte : au milieu de l'écran (du haut 40% au bas 40%)
-            // Empêche de détecter "About" et "Hero" en même temps
             { threshold: 0, rootMargin: "-40% 0px -40% 0px" }
         );
 
-        // Petit délai pour s'assurer que toutes les autres sections du DOM sont prêtes avant observation
         const timeoutId = setTimeout(() => {
             sections.forEach(({ id }) => {
                 const el = document.getElementById(id);
@@ -105,71 +89,15 @@ export default function Hero() {
 
     return (
         <main>
-            {/* Minimalist Top Brand Bar */}
-            <div className="fixed top-0 left-0 w-full z-50 px-4 py-4 md:px-6 md:py-6 flex justify-between items-center pointer-events-none">
-                <div className="flex items-center gap-2 pointer-events-auto overflow-hidden">
-                    <motion.a 
-                        onClick={(e) => { e.preventDefault(); document.getElementById('hero')?.scrollIntoView({ behavior: 'smooth' }); }}
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.5, delay: 0.3 }}
-                        className={`text-xl md:text-2xl font-bold font-magilo tracking-tighter transition-colors cursor-pointer ${
-                            activeId === 'hero' ? 'text-white' : 'text-white hover:text-amber-400'
-                        }`}
-                    >
-                        Teizred
-                    </motion.a>
-
-                    <motion.span
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.5, delay: 0.6 }}
-                        className="text-white/40 font-montserrat"
-                    >
-                        ·
-                    </motion.span>
-
-                    <AnimatePresence mode="wait">
-                        <motion.span
-                            key={statusIndex}
-                            initial={{ opacity: 0, x: -20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            exit={{ opacity: 0, x: 20 }}
-                            transition={{ duration: 0.4, delay: 0.9 }}
-                            className="text-sm font-montserrat text-white"
-                        >
-                            {STATUS_WORDS[statusIndex]}
-                        </motion.span>
-                    </AnimatePresence>
-                </div>
-                
-                <motion.div 
-                    initial={{ opacity: 0, x: 50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
-                    className="pointer-events-auto"
-                >
-                    <a
-                        href="/cv.pdf"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 bg-amber-400 text-black font-bold font-dm-serif px-6 py-2 md:px-8 md:py-2.5 rounded-full hover:bg-amber-300 transition-colors duration-300 text-sm md:text-base shadow-lg"
-                    >
-                        Mon CV
-                        <DownloadSimple size={20} weight="bold" />
-                    </a>
-                </motion.div>
-            </div>
+            <Header activeId={activeId} />
 
             <section id="hero" className="relative min-h-screen w-full flex items-center justify-center text-white overflow-hidden pt-28 pb-36 md:py-0">
-
                 <motion.div 
                     variants={containerVariants}
                     initial="hidden"
                     animate="visible"
                     className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 flex flex-col-reverse md:flex-row items-center gap-6 md:gap-16"
                 >
-
                     {/* Left: Text */}
                     <div className="w-full md:w-1/2 mb-4 md:mb-0 text-center md:text-left">
                         <motion.h1 
@@ -229,66 +157,15 @@ export default function Hero() {
                             className="w-full h-full object-cover rounded-full border-amber-400/70 shadow-2xl shadow-amber-400/20"
                         />
                     </motion.div>
-
                 </motion.div>
 
-                <motion.button
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={hasEntered ? { 
-                        opacity: navVisible ? 0 : 1, 
-                        y: navVisible ? 20 : 0, 
-                        pointerEvents: navVisible ? 'none' : 'auto' 
-                    } : { opacity: 0, y: 20 }}
-                    transition={{ duration: 0.6, ease: "easeOut" }}
-                    onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
-                    className="group fixed bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 border-2 border-amber-400 text-white font-bold font-dm-serif text-xl px-10 py-3.5 rounded-full backdrop-blur-md bg-black/30 z-50 shadow-2xl hover:bg-amber-400/10 transition-colors flex items-center justify-center gap-2 cursor-pointer"
-                >
-                    Explorer 
-                    <span className="group-hover:translate-y-1 transition-transform duration-300">
-                        <motion.span 
-                            animate={{ y: [0, 3, 0] }} 
-                            transition={{ repeat: Infinity, duration: 1.1, ease: "easeInOut" }}
-                            className="block"
-                        >
-                            <ArrowDown size={16} weight="bold" />
-                        </motion.span>
-                    </span>
-                </motion.button>
-
-                <motion.div 
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={hasEntered ? { 
-                        opacity: navVisible ? 1 : 0, 
-                        y: navVisible ? 0 : 20, 
-                        pointerEvents: navVisible ? 'auto' : 'none' 
-                    } : { opacity: 0, y: 20 }}
-                    transition={{ duration: 0.6, ease: "easeOut" }}
-                    className="fixed bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 flex items-center px-1.5 py-1.5 md:px-2 md:py-2 rounded-full border-2 border-amber-400 backdrop-blur-md bg-black/30 z-50 overflow-hidden shadow-2xl w-[90%] max-w-[320px] md:max-w-[450px] justify-between"
-                >
-                    <div className="absolute inset-0 z-0 pointer-events-none">
-                        <motion.div
-                            animate={{ width: `${progress * 100}%` }}
-                            transition={{ type: "spring", stiffness: 100, damping: 20 }}
-                            className="bg-amber-400/20 rounded-full h-full"
-                        />
-                    </div>
-                    {sections.map(({ id, label }) => (
-                        <motion.button
-                            key={id}
-                            onClick={() => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })}
-                            animate={activeId === id ? { scale: [1, 1.05, 1] } : { scale: 1 }}
-                            transition={activeId === id ? { repeat: Infinity, duration: 2, ease: "easeInOut" } : { duration: 0.3 }}
-                            className={`flex-1 py-1 md:py-1.5 rounded-full text-[10px] md:text-sm font-bold font-dm-serif cursor-pointer transition-colors duration-300 relative z-10 whitespace-nowrap text-center ${
-                                activeId === id 
-                                    ? 'bg-amber-400 text-black shadow-md' 
-                                    : 'text-white/70 hover:text-amber-400'
-                            }`}
-                        >
-                            {label}
-                        </motion.button>
-                    ))}
-                </motion.div>
-
+                <FloatingNav 
+                    sections={sections} 
+                    activeId={activeId} 
+                    progress={progress} 
+                    navVisible={navVisible} 
+                    hasEntered={hasEntered} 
+                />
             </section>
         </main>
     );
