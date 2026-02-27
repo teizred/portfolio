@@ -34,7 +34,7 @@ export default function Header({ activeId }: HeaderProps) {
         const totalMinutes = hour * 60 + minutes;
 
         if (totalMinutes >= 7 * 60 && totalMinutes < 9 * 60) return { emoji: "☕", text: "Café et warm-up" };
-        if (totalMinutes >= 9 * 60 && totalMinutes < 12 * 60) return { emoji: "💻", text: "Focus total sur le code" };
+        if (totalMinutes >= 9 * 60 && totalMinutes < 12 * 60) return { emoji: "💻", text: "Actuellement en train de coder" };
         if (totalMinutes >= 12 * 60 && totalMinutes < 14 * 60) return { emoji: "🍽️", text: "Pause déjeuner" };
         if (totalMinutes >= 14 * 60 && totalMinutes < 16 * 60 + 30) return { emoji: "⚡", text: "Build de features" };
         if (totalMinutes >= 16 * 60 + 30 && totalMinutes < 18 * 60) return { emoji: "🧘", text: "Quick break" };
