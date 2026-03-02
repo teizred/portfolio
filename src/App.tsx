@@ -29,7 +29,7 @@ function App() {
 
   return (
     <>
-    <div className="min-h-screen bg-linear-to-r from-[#b6764e] via-[#3a465a] to-[#0b1220]">
+    <div className="min-h-screen bg-linear-to-br from-[#1a1a2e] via-[#16213e] to-[#0f3460]">
       <Hero />
       <About />
       <Skills />
