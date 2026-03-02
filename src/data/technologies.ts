@@ -75,6 +75,9 @@ export const TECHNOLOGIES: Record<string, TechItem> = {
   figma: { name: "Figma", icon: "https://svgl.app/library/figma.svg" },
   docker: { name: "Docker", icon: "https://svgl.app/library/docker.svg" },
   railway: { name: "Railway", icon: "https://svgl.app/library/railway.svg", invert: true },
+  mapbox: { name: "Mapbox", icon: "https://cdn.simpleicons.org/mapbox/white" },
+  prisma: { name: "Prisma", icon: "https://svgl.app/library/prisma.svg", invert: true },
+  neon: { name: "Neon", icon: "https://svgl.app/library/neon.svg" },
 
   // Soft Skills
   teamwork: { name: "Travail d'équipe", component: UsersThree },

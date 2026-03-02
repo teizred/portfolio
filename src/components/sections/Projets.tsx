@@ -4,6 +4,7 @@ import image2 from "/2.png"
 import image3 from "/3.png"
 import image4 from "/4.png"
 import image5 from "/5.png"
+import image6 from "/6.png"
 import { motion } from "framer-motion"
 import { slowContainerVariants, itemVariants, badgeVariants, defaultViewport } from "../../animations";
 
@@ -12,7 +13,7 @@ export default function Projets() {
         {
             title: 'Adashboard',
             description: 'Adashboard est une application React connectée à un backend ExpressJS permettant d’afficher et de gérer des thèmes et leurs compétences associées. Le projet met en œuvre la récupération de données via une API REST, la manipulation CRUD, ainsi qu’un système de progression dynamique. Il illustre ma capacité à intégrer un frontend React avec un backend Node/Express et une base de données PostgreSQL.',
-            technologies: [TECHNOLOGIES.html, TECHNOLOGIES.css, TECHNOLOGIES.javascript, TECHNOLOGIES.react, TECHNOLOGIES.expressjs, TECHNOLOGIES.nodejs],
+            technologies: [TECHNOLOGIES.html, TECHNOLOGIES.css, TECHNOLOGIES.javascript, TECHNOLOGIES.react, TECHNOLOGIES.expressjs, TECHNOLOGIES.nodejs, TECHNOLOGIES.postgresql, TECHNOLOGIES.neon],
             image: image,
             link: 'https://github.com/teizred/Adashboardv2'
 
@@ -20,10 +21,18 @@ export default function Projets() {
         {
             title: 'Pertes (Work in Progress)',
             description: 'Application web de suivi des pertes produits par dictée vocale. L\'IA (GPT-4o-mini) parse automatiquement le français parlé et enregistre les données sur Neon PostgreSQL, avec ajustement manuel des quantités et export PDF / email. Conçue pour un usage terrain en restauration rapide, elle simplifie la saisie des pertes sans interaction clavier.',
-            technologies: [ TECHNOLOGIES.transcript, TECHNOLOGIES.react, TECHNOLOGIES.typescript, TECHNOLOGIES.tailwindcss, TECHNOLOGIES.expressjs, TECHNOLOGIES.railway],
+            technologies: [ TECHNOLOGIES.transcript, TECHNOLOGIES.react, TECHNOLOGIES.typescript, TECHNOLOGIES.tailwindcss, TECHNOLOGIES.expressjs, TECHNOLOGIES.railway, TECHNOLOGIES.postgresql, TECHNOLOGIES.neon],
             image: image2,
             link: 'https://github.com/teizred/web-speech-api',
             demo: 'https://web-speech-api-ai.vercel.app/'
+        },
+         {
+            title: 'Bancs de Paris (Work in Progress)',
+            description: 'Application de cartographie interactive recensant les bancs publics de Paris. Elle affiche en temps réel plusieurs milliers de bancs sur une carte Mapbox, en s\'appuyant sur l\'API Open Data de la Ville de Paris. Le projet est en cours de développement et j\'ai de grandes ambitions pour la suite : un système de signalement communautaire pour identifier les bancs anti-SDF, une intégration Google Street View pour visualiser chaque banc depuis la rue, ainsi qu\'un espace utilisateur avec notes et commentaires.',
+            technologies: [TECHNOLOGIES.react, TECHNOLOGIES.typescript,TECHNOLOGIES.tailwindcss, TECHNOLOGIES.mapbox, TECHNOLOGIES.api, TECHNOLOGIES.nodejs, TECHNOLOGIES.expressjs, TECHNOLOGIES.prisma, TECHNOLOGIES.postgresql, TECHNOLOGIES.neon, ],
+            image: image6,
+            link: 'https://github.com/teizred/bancs-paris',
+            demo: 'https://bancs-paris.vercel.app'
         },
         {
             title: 'Adapage',
@@ -36,7 +45,7 @@ export default function Projets() {
         {
             title: 'Adataviz - Dashboard Vélib\' en temps réel',
             description: 'Développement d\'une application web en JavaScript Vanilla exploitant l\'API OpenData de Paris. Le site permet de consulter en direct la disponibilité des stations (vélos et bornes) via une interface responsive avec recherche filtrée et pagination. L\'accent a été mis sur la gestion de l\'asynchronisme (fetch) et l\'optimisation de l\'expérience utilisateur.',
-            technologies: [TECHNOLOGIES.html, TECHNOLOGIES.css, TECHNOLOGIES.javascript, TECHNOLOGIES.api],
+            technologies: [TECHNOLOGIES.html, TECHNOLOGIES.css, TECHNOLOGIES.javascript, TECHNOLOGIES.api,],
             image: image5,
             link: 'https://github.com/teizred/adataviz_Teizred',
             demo: 'https://adataviz-teizred.vercel.app'
