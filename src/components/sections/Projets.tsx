@@ -8,8 +8,25 @@ import image6 from "/6.png"
 import { motion } from "framer-motion"
 import { slowContainerVariants, itemVariants, badgeVariants, defaultViewport } from "../../animations";
 
+interface TechItem {
+    name: string;
+    icon?: string;
+    component?: any;
+    invert?: boolean;
+}
+
+interface Projet {
+    title: string;
+    description: string;
+    technologies: (TechItem | undefined)[];
+    image: string;
+    link: string;
+    demo?: string;
+    objectFit?: 'object-cover' | 'object-contain' | 'object-fill' | 'object-none' | 'object-scale-down';
+}
+
 export default function Projets() {
-    const projetsCatagories = [
+    const projetsCatagories: Projet[] = [
         {
             title: 'Adashboard',
             description: 'Adashboard est une application React connectée à un backend ExpressJS permettant d’afficher et de gérer des thèmes et leurs compétences associées. Le projet met en œuvre la récupération de données via une API REST, la manipulation CRUD, ainsi qu’un système de progression dynamique. Il illustre ma capacité à intégrer un frontend React avec un backend Node/Express et une base de données PostgreSQL.',
@@ -87,7 +104,7 @@ export default function Projets() {
                                 <img 
                                     src={projet.image} 
                                     alt={projet.title} 
-                                    className="w-full h-56 md:h-full object-cover" 
+                                    className={`w-full h-56 md:h-full ${projet.objectFit || 'object-contain'}`} 
                                 />
                             </div>
 
