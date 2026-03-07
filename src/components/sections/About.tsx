@@ -36,7 +36,7 @@ function Counter({ value }: { value: string }) {
 export default function About() {
   const stats = [
     { number: '5+', label: 'Projets Complétés' },
-    { number: '300+', label: 'Commits GitHub' },
+    { number: '400+', label: 'Commits GitHub' },
     { number: '5+', label: 'Technologies Maîtrisées' },
   ];
 
